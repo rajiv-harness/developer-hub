@@ -17,7 +17,7 @@ You can set up CCM for your AWS resources in a simple two-step process:
 
 > **☆ NOTE —** After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.### AWS Connector requirements
 
-* The same connector cannot be used in NextGen and FirstGen. For information on creating an AWS connector in the FirstGen see [Set Up Cost Visibility for AWS](https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws).
+* The same connector cannot be used in NextGen and FirstGen. 
 * For CCM, AWS connectors are available only at the Account level in Harness.
 * You can create multiple connectors per AWS account. 
 * Review the AWS connector requirements for different CCM features:
@@ -317,9 +317,10 @@ When you are done with the **Delivery options** step, it will look something l
 
 ### Choose Requirements
 
-Select the Cloud Cost Management features that you would like to use on your AWS account. Based on your selection Harness requires specific permissions for the cross-account role. See [AWS Access Permissions](https://harness.helpdocs.io/article/80vbt5jv0q/preview#aws-access-permissions).
+Select the Cloud Cost Management features that you would like to use on your AWS account. Based on your selection Harness requires specific permissions for the cross-account role. 
 
-![](./static/set-up-cost-visibility-for-aws-34.png)
+  ![](./static/set-up-cost-visibility-for-aws-34.png)
+  
   CCM offers the following features:
 
 
@@ -434,7 +435,7 @@ After creating an API Key for your Service Account, generate a Token for this AP
 
 ### Add an Admin Role to the Service Account
 
-Ensure that you've added the Admin role to this Service Account. For more information, see [Add and Manage Roles](/article/tsons9mu0v-add-manage-roles).
+Ensure that you've added the Admin role to this Service Account. For more information, see **Harness Platform** > **Role-based Access Control** > **Add and Manage Roles** section.
 
 ![](./static/set-up-cost-visibility-for-aws-46.png)
 

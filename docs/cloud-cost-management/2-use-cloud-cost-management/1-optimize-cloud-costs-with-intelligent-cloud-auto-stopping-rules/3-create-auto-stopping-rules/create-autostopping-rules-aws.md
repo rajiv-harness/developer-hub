@@ -86,7 +86,7 @@ Perform the following steps to get started with AutoStopping Rule.
   
   After the idle time elapses:  
   
-  - For Spot Instances, a snapshot is taken and then the instances are terminated. See [How Spot Orchestration Works?](/article/7025n9ml7z-create-autostopping-rules-aws#review_how_spot_orchestration_works).  
+  - For Spot Instances, a snapshot is taken and then the instances are terminated. See **How Spot Orchestration Works?** section.  
   
   - On-Demand Instances are shut down without a snapshot.
   

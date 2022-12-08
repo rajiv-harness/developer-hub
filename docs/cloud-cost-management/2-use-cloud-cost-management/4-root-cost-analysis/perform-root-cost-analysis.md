@@ -284,7 +284,7 @@ The cost of each Kubernetes label.
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md).
    
      ![](./static/perform-root-cost-analysis-64.png)
 3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.

@@ -15,7 +15,7 @@ import tenant_info from './static/set-up-cost-visibility-for-azure-03.png'
 import run_now from './static/set-up-cost-visibility-for-azure-09.png'
 ```
 
-Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CCM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](../../2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md).
+Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CCM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](../../2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
 
 > **☆ NOTE —** After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
 
@@ -130,7 +130,7 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 
 ### Choose Requirements
 
-1. Select **Cost Visibility** and **Azure resource optimization using AutoStopping rules** in **Create Cross Account Role**. Make sure to add the required [permissions](https://docs.harness.io/article/v682mz6qfd-set-up-cost-visibility-for-azure#step_4_create_service_principal_and_assign_permissions) to the service principal.  
+1. Select **Cost Visibility** and **Azure resource optimization using AutoStopping rules** in **Create Cross Account Role**. Make sure to add the required permissions to the service principal.  
 
   CCM offers the following features:
   
@@ -159,7 +159,7 @@ Create a service principal and assign permissions by running the following comma
 Run the following **bash** commands using your **bash** terminal or Azure cloud shell:
 
 `az ad sp create``10034206-24bf-442b-968c-70a9c896a2f6`  
-See [Azure client application ID](https://docs.harness.io/article/9epdx5m9ae-add-a-microsoft-azure-connector#step_4_application_client_id) for more information.
+See **Azure client application ID**  in **Harness Platform** > **Connectors** > **Add a Microsoft Azure Cloud Connector** for more information.
 > **☆ NOTE —** If you encounter the following error message, proceed with assigning permissions to the storage account.  
   `Another object with the same value for property servicePrincipalNames already exists.`  
   The error means that your Harness CCM application is already registered into your Azure account.
@@ -199,14 +199,14 @@ The connection is validated and verified in this step. After successful validati
 
 Your connector is listed in the **Connectors**.
 
-![](https://files.helpdocs.io/i5nl071jo5/articles/v682mz6qfd/1626084326416/screenshot-2021-07-12-at-3-34-31-pm.png)
+![](static/set-up-cost-visibility-for-azure-13.png)
 
 ### Troubleshooting
 
-1. If you get the `When using this permission, the backing application of the service principal being created must in the local tenant` error, check if you have the **Application Administrator** role assigned for your Azure AD. Users in this role can create and manage all aspects of enterprise applications, application registrations, and application proxy settings. For more information, see [Prerequisites](/article/v682mz6qfd-set-up-cost-visibility-for-azure#prerequisites) and [Application Administrator](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference#application-administrator).
+1. If you get the `When using this permission, the backing application of the service principal being created must in the local tenant` error, check if you have the **Application Administrator** role assigned for your Azure AD. Users in this role can create and manage all aspects of enterprise applications, application registrations, and application proxy settings. For more information, see [Application Administrator](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference#application-administrator).
 
 ### Next Steps
 
-* [Analyze Cost for Azure Using Perspectives](/article/p17sq3pwbd-analyze-cost-for-azure)
-* [Create Cost Perspectives](/article/dvspc6ub0v-create-cost-perspectives)
+* [Analyze Cost for Azure Using Perspectives](../../2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-azure.md)
+* [Create Cost Perspectives](../../2-use-cloud-cost-management/2-ccm-perspectives/1-create-cost-perspectives.md)
 
