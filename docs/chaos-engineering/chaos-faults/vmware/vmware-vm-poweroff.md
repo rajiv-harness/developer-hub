@@ -13,7 +13,7 @@ title: VMware VM-Poweroff
 
 ## Uses
 <details>
-<summary>View the uses of the experiment</summary>
+<summary>View the uses of the fault</summary>
 <div>
 Coming soon.
 </div>
@@ -53,10 +53,10 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 
 :::
 
-## Experiment tunables
+## Fault Tunables
 
 <details>
-    <summary>Check the Experiment Tunables</summary>
+    <summary>Check the Fault Tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -66,7 +66,7 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> APP_VM_MOIDS </td>
-        <td> MOIDs of the vmware instance</td>
+        <td> MOIDs of the VMware instance</td>
         <td> Once you open VM in vCenter WebClient, you can find MOID in address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. Eg: vm-5365 </td>
       </tr>
     </table>
@@ -100,10 +100,10 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
     </table>
 </details>
 
-## Experiment Examples
+## Fault Examples
 
-### Common Experiment Tunables
-Refer the [common attributes](../common-tunables-for-all-experiments) to tune the common tunables for all the experiments.
+### Common Fault Tunables
+Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Stop/Poweroff VM By MOID
 
