@@ -8,9 +8,11 @@ In some cases, a scanner might require additional files such as SSL certificates
 
 :::note
 
-Make sure that your certificates meet all requirements of the external scan tool. Your certificates must be valid, unexpired, and have a complete trust chain. 
-
-To troubleshoot certificate issues, run your pipeline in Debug mode and check for the message **`unable to get local issuer certificate`**.
+- You must have **root access** to perform the Kubernetes workflow described below.
+  
+- Make sure that your certificates meet all requirements of the external scan tool. Your certificates must be valid, unexpired, and have a complete trust chain.
+  
+- To troubleshoot certificate issues, run your pipeline in Debug mode and check for the message **`unable to get local issuer certificate`**.
 
 :::
 
