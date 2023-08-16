@@ -4,39 +4,29 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
-// import WhatsNew from "@site/src/components/WhatsNew";
 import LearnAboutPlatform from "@site/src/components/LearnAboutPlatform";
-import HarnessU from "@site/src/components/HarnessU";
+import HomepageCertifications from "@site/src/components/HomepageCertifications";
 import Feedback from "@site/src/components/Feedback";
 import MDXContent from "@theme/MDXContent";
-// import Lottie from "lottie-react";
-// import allModuleAnimation from "./all_module_animation.json";
+import Lottie from "lottie-react";
+import allModuleAnimation from "./assets/hdh_hero.json";
 
 import styles from "./index.module.scss";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("container", styles.heroBanner)}>
-      <div className={styles.heroContainer}>
-        <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
-        <p className={styles.heroSubTitle}>{siteConfig.tagline}</p>
-        {/*<div className={styles.buttons}>
-          <Link
-            className={clsx('button button--lg', styles.heroButton)}
-            to="/intro">
-            Start Here
-          </Link>
-      </div> */}
-      </div>
-      {/* <img src="/img/hero.svg" className={styles.heroImg} /> */}
+    <>
+      <header className={clsx("container", styles.heroBanner)}>
+        <div className={styles.heroContainer}>
+          <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
+          <p className={styles.heroSubTitle}>{siteConfig.tagline}</p>
+        </div>
+      </header>
       <div className={styles.heroImg}>
-        {/* <Lottie animationData={allModuleAnimation} loop={true} /> */}
-        <video autoPlay={true} loop={true} muted={true}>
-          <source src="/img/all_module_animation.mp4" type="video/mp4" />
-        </video>
+        <Lottie animationData={allModuleAnimation} loop={true} />
       </div>
-    </header>
+    </>
   );
 }
 
@@ -45,8 +35,8 @@ export default function Home(): JSX.Element {
   return (
     <MDXContent>
       <Layout
-        title={`${siteConfig.title}`}
-        description="Description will go into a meta tag in <head />"
+        // title="Home" // {`${siteConfig.title}`}
+        description={`${siteConfig.tagline}`} // "Description will go into a meta tag in <head />"
       >
         <div className={styles.homepageWrapper}>
           <HomepageHeader />
@@ -54,14 +44,13 @@ export default function Home(): JSX.Element {
             <div className="container">
               <div className="flexContainer">
                 <HomepageFeatures />
-                {/* <WhatsNew /> */}
               </div>
               <LearnAboutPlatform />
             </div>
             <Feedback />
           </main>
 
-          <HarnessU />
+          <HomepageCertifications />
         </div>
       </Layout>
     </MDXContent>

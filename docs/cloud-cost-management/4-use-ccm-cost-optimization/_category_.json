@@ -1,0 +1,12 @@
+{
+    "label":"Cost optimization",
+    "position": 4,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Cost optimization"
+    }
+    }
+ 

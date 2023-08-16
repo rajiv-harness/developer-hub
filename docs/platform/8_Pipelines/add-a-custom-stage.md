@@ -1,7 +1,7 @@
 ---
-title: Add a Custom Stage
+title: Add a custom stage
 description: The Custom stage provides flexibility to support any use case that doesn't require the pre-defined settings of CI, CD, or Approvals.
-# sidebar_position: 2
+sidebar_position: 4
 helpdocs_topic_id: o60eizonnn
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 
 :::note
-Currently, this feature is behind the feature flag `NG_CUSTOM_STAGE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.This topic describes how to set up a Custom stage.
+Currently, this feature is behind the feature flag `NG_CUSTOM_STAGE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. This topic describes how to set up a Custom stage.
 
 :::
 
@@ -24,7 +24,7 @@ The steps available in a Custom stage are also available in standard stages.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Add a Stage](add-a-stage.md)
 
 ### Limitations
@@ -34,7 +34,7 @@ The steps available in a Custom stage are also available in standard stages.
 * Licensing is applied to the steps in Custom stage. For example, CD Steps such as the HTTP step are available inside Custom stage only if you have CD license.
 * There is no Rollback functionality in a Custom stage.
 	+ Rollbacks can be achieved via conditional execution. For example, run a step only is something failed/succeeded previously.
-* You can select which Delegate to use for each step in a Custom stage using the step's **Delegate Selector** setting. If this setting is not used, then Harness will select a Delegate using its standard selection process. See [Delegates Overview](../2_Delegates/delegates-overview.md).
+* You can select which Delegate to use for each step in a Custom stage using the step's **Delegate Selector** setting. If this setting is not used, then Harness will select a Delegate using its standard selection process. See [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 * Custom stage can be used as a template like other stage types. Step templates can be used inside a Custom stage, and the Pipeline containing the Custom stage can also be used as a Template.
 
 ### Visual Summary
@@ -46,6 +46,7 @@ The following video provides a quick overview of the Custom stage.
 In your Pipeline, click **Add Stage**, and then click **Custom Stage**.
 
 ![](./static/add-a-custom-stage-58.png)
+
 Enter a name for the stage. Harness automatically adds an Id ([Entity Identifier](../20_References/entity-identifier-reference.md)) for the stage.
 
 Click **Set Up Stage**.
@@ -78,13 +79,13 @@ These steps are also available in CI, CD, and Approval stages.
 
 For details on the different steps, see:
 
-* [General CD](https://ngdocs.harness.io/category/y6gyszr0kl)
-* [Using Shell Scripts in CD Stages](https://docs.harness.io/article/k5lu0u6i1i-using-shell-scripts)
+* [General CD](https://developer.harness.io/docs/category/general-cd-execution-steps)
+* [Using Shell Scripts in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts)
 * [Create an HTTP Step Template](../13_Templates/harness-template-library.md)
-* [Approvals](https://ngdocs.harness.io/category/bz4zh3b75p)
-* [Synchronize Deployments using Barriers](https://docs.harness.io/article/dmlf8w2aeh-synchronize-deployments-using-barriers)
-* [Add a Policy Engine Step to a Pipeline](../14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
-* [Terraform How-tos](https://docs.harness.io/article/w6i5f7cpc9-terraform-how-tos)
+* [Approvals](https://developer.harness.io/docs/category/approvals)
+* [Synchronize Deployments using Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers/)
+* [Add a Policy Engine Step to a Pipeline](../Governance/14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
+* [Terraform How-tos](/docs/category/terraform)
 
 CI and CD-specific steps, like a Rolling Deployment, are not available in the Custom stage.
 

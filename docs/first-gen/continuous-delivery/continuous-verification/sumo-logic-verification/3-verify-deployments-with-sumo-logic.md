@@ -48,7 +48,7 @@ Enter the keywords for your search. Use the Sumo Logic search field and then cop
 
 [![](./static/3-verify-deployments-with-sumo-logic-06.png)](./static/3-verify-deployments-with-sumo-logic-06.png)
 
-Example keywords: **\*exception\*** and **\*error\***.For more information, see [Search Syntax Overview](https://help.sumologic.com/Search/Get-Started-with-Search/How-to-Build-a-Search/Search-Syntax-Overview) and [Keyword Search Expressions](https://help.sumologic.com/Search/Get-Started-with-Search/How-to-Build-a-Search/Keyword-Search-Expressions) from Sumo Logic.
+Example keywords: **\*exception\*** and **\*error\***.For more information, see [Search Syntax Overview](https://help.sumologic.com/docs/search/get-started-with-search/build-search/search-syntax-overview/) and [Keyword Search Expressions](https://help.sumologic.com/Search/Get-Started-with-Search/How-to-Build-a-Search/Keyword-Search-Expressions) from Sumo Logic.
 
 ##   Step 4: Field name for Host/Container
 
@@ -117,7 +117,7 @@ If you select **Predictive Analysis** in **Baseline for Risk Analysis**, the tim
 
 ##   Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/3-verify-deployments-with-sumo-logic-16.png)
 
@@ -159,6 +159,6 @@ To learn about the verification analysis features, see the following sections.
 ##   Next Steps
 
 * [CV Strategies, Tuning, and Best Practices](../continuous-verification-overview/concepts-cv/cv-strategies-and-best-practices.md#algorithm-sensitivity-and-failure-criteria)
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
-* [Managing Users and Groups (RBAC)](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
+* [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md)
+* [Managing Users and Groups (RBAC)](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md)
 

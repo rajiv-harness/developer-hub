@@ -4,6 +4,9 @@
 // const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const path = require("path");
+const clientRedirects = require("./client-redirects");
+
+const BASE_URL = process.env.BASE_URL || "/";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -11,10 +14,16 @@ const config = {
   tagline:
     "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
   url: "https://developer.harness.io",
-  baseUrl: "/",
+  baseUrl: BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  favicon: "img/hdh_fav_icon_grey.ico",
+
+  //Mermaid Diagram Functionality
+  markdown: {
+    mermaid: true,
+  },
+  themes: ["@docusaurus/theme-mermaid"],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -42,31 +51,20 @@ const config = {
           exclude: ["**/shared/**", "**/static/**"],
           routeBasePath: "docs", //CHANGE HERE
         },
-        // blog: {
-        //   //   showReadingTime: true,
-        //   editUrl: "https://github.com/harness/developer-hub/tree/main",
-        //   blogTitle: "Release Notes",
-        //   blogDescription: "Harness Platform Release Notes",
-        //   postsPerPage: "ALL",
-        //   blogSidebarTitle: "All Release Notes",
-        //   blogSidebarCount: "ALL",
-        //   feedOptions: {
-        //     type: "all",
-        //     copyright: `Copyright © ${new Date().getFullYear()} Harness, Inc.`,
-        //   },
-        //   // URL route for the blog section of your site.
-        //   // *DO NOT* include a trailing slash.
-        //   routeBasePath: "release-notes",
-        //   // Path to data on filesystem relative to site dir.
-        //   path: "release-notes",
-        //   include: ["**/*.{md,mdx}"],
-        //   exclude: ["**/shared/**", "**/static/**"],
-        // },
+        sitemap: {
+          // changefreq: 'weekly',
+          // priority: 0.5,
+          ignorePatterns: [
+            "/docs/infra-as-code-management",
+            "/docs/infra-as-code-management/**",
+          ],
+          // filename: 'sitemap.xml',
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"), // we could also use scss here
         },
         gtag: {
-          trackingID: "GTM-MJB7HPB", //, GTM-MJB7HPB is Prod - GTM-W895FNP is Pre-Prod
+          trackingID: "G-46758J5H8P",
           anonymizeIP: false,
         },
       }),
@@ -84,72 +82,79 @@ const config = {
           src: "img/logo_dlp.svg",
         },
         items: [
-          {
+          /*{
             position: "left",
-            // label: "img",
-            html: "<img src='/img/icon_beta.svg' alt='BETA' width='39' height='19' />",
+            html: `<img src='${BASE_URL}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
             href: "#",
-          },
-          {
-            // type: "search",
-            // position: "right",
-            // className: "searchBar",
-            // use customized coveo search on sidebar
-            type: "custom-coveo-search",
-            position: "right",
-          },
+          },*/
           {
             position: "right",
             type: "dropdown",
             label: "Tutorials",
+            to: "tutorials",
             items: [
               {
                 // type: "doc",
                 label: "All Tutorials",
-                to: "tutorials/get-started",
+                to: "tutorials",
               },
               {
                 // type: "doc",
-                label: "Build & Test Code",
-                to: "tutorials/build-code",
-                // docId: "build-code",
+                label: "Set up CI Pipelines",
+                to: "tutorials/ci-pipelines",
+                // docId: "ci-pipelines",
                 // activeBasePath: "to",
               },
               {
                 // type: "doc",
-                label: "Deploy Services",
-                to: "tutorials/deploy-services",
+                label: "Set up CD Pipelines",
+                to: "tutorials/cd-pipelines",
               },
               {
                 // type: "doc",
                 label: "Manage Feature Flags",
-                to: "tutorials/manage-feature-flags",
-                // activeBaseRegex: "/manage-feature-flags",
+                to: "tutorials/feature-flags",
+                // activeBaseRegex: "/feature-flags",
               },
               {
                 // type: "doc",
                 label: "Manage Cloud Costs",
-                to: "tutorials/manage-cloud-costs",
+                to: "tutorials/cloud-costs",
               },
               {
                 // type: "doc",
                 label: "Manage Service Reliability",
-                to: "tutorials/manage-service-reliability",
+                to: "tutorials/service-reliability",
               },
               {
                 // type: "doc",
                 label: "Orchestrate Security Tests",
-                to: "tutorials/orchestrate-security-tests",
+                to: "tutorials/security-tests",
               },
               {
                 // type: "doc",
                 label: "Run Chaos Experiments",
-                to: "tutorials/run-chaos-experiments",
+                to: "tutorials/chaos-experiments",
+              },
+              {
+                // type: "doc",
+                label: "Track Errors",
+                to: "tutorials/error-tracking",
+              },
+              {
+                // type: "doc",
+                label: "Manage Developer Portal",
+                to: "tutorials/internal-developer-portal",
               },
               {
                 // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
+              },
+              {
+                // type: "doc",
+                label: "Administer Harness Self-Managed Enterprise Edition",
+                to: "tutorials/self-managed-enterprise-edition",
               },
             ],
           },
@@ -157,6 +162,7 @@ const config = {
             position: "right",
             type: "dropdown",
             label: "Documentation",
+            to: "docs",
             items: [
               {
                 label: "Get Started",
@@ -191,7 +197,15 @@ const config = {
                 to: "docs/chaos-engineering",
               },
               {
-                label: "Harness Platform",
+                label: "Continuous Error Tracking",
+                to: "docs/continuous-error-tracking",
+              },
+              {
+                label: "Internal Developer Portal",
+                to: "docs/internal-developer-portal",
+              },
+              {
+                label: "Platform",
                 to: "docs/platform",
               },
               {
@@ -203,6 +217,10 @@ const config = {
                 to: "docs/first-gen",
               },
               {
+                label: "Release Notes",
+                href: "/release-notes/whats-new",
+              },
+              {
                 label: "FAQs",
                 to: "docs/frequently-asked-questions",
               },
@@ -212,70 +230,64 @@ const config = {
               },
               {
                 label: "API Reference",
-                href: "https://apidocs.harness.io/",
+                to: "https://apidocs.harness.io/",
               },
             ],
           },
           {
-            // to: "release-notes",
-            label: "Release Notes",
+            label: "Certifications",
             position: "right",
             type: "dropdown",
+            to: "certifications",
             items: [
               {
-                label: "What's New",
-                to: "release-notes/whats-new",
+                label: "All Certifications",
+                to: "certifications",
               },
               {
-                label: "Early Access",
-                to: "release-notes/early-access",
+                label: "Continuous Delivery & GitOps",
+                to: "certifications/continuous-delivery",
               },
               {
                 label: "Continuous Integration",
-                to: "release-notes/continuous-integration",
-              },
-              {
-                label: "Continuous Delivery",
-                to: "release-notes/continuous-delivery",
-              },
-              {
-                label: "Feature Flags",
-                to: "release-notes/feature-flags",
+                to: "certifications/continuous-integration",
               },
               {
                 label: "Cloud Cost Management",
-                to: "release-notes/cloud-cost-management",
+                to: "certifications/cloud-cost-management",
               },
               {
-                label: "Service Reliability Management",
-                to: "release-notes/service-reliability-management",
+                label: "Feature Flags",
+                to: "certifications/feature-flags",
               },
               {
-                label: "Security Testing Orchestration",
-                to: "release-notes/security-testing-orchestration",
-              },
-              {
-                label: "Chaos Engineering",
-                to: "release-notes/chaos-engineering",
-              },
-              {
-                label: "Harness Platform",
-                to: "release-notes/platform",
-              },
-              {
-                label: "Self-Managed Enterprise Edition",
-                to: "release-notes/self-managed-ee",
-              },
-              {
-                label: "Harness FirstGen",
-                to: "release-notes/first-gen",
+                label: "Instructions",
+                to: "certifications/instructions",
               },
             ],
           },
           {
             position: "right",
-            href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
-            label: "Join Slack",
+            to: "kb",
+            label: "Knowledge Base",
+          },
+          {
+            position: "right",
+            to: "community",
+            label: "Community",
+          },
+          //{
+          //  position: "right",
+          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
+          //  label: "Join Slack",
+          //},
+          {
+            // type: "search",
+            // position: "right",
+            // className: "searchBar",
+            // use customized coveo search on sidebar
+            type: "custom-coveo-search",
+            position: "right",
           },
           {
             position: "right",
@@ -283,13 +295,6 @@ const config = {
             html: '<button class="button button--cta">Sign up</button>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
-          /**
-          {
-            href: "https://github.com/harness/developer-hub",
-            label: "Developer Hub GitHub",
-            position: "right",
-          },
-          */
         ],
       },
       footer: {
@@ -300,35 +305,39 @@ const config = {
             items: [
               {
                 label: "Overview",
-                href: "https://harness.io/products/platform",
+                to: "https://harness.io/products/platform",
               },
               {
                 label: "Continuous Integration",
-                href: "https://harness.io/products/continuous-integration",
+                to: "https://harness.io/products/continuous-integration",
               },
               {
                 label: "Continuous Delivery & GitOps",
-                href: "https://harness.io/products/continuous-delivery",
+                to: "https://harness.io/products/continuous-delivery",
               },
               {
                 label: "Feature Flags",
-                href: "https://harness.io/products/feature-flags",
+                to: "https://harness.io/products/feature-flags",
               },
               {
                 label: "Cloud Cost Management",
-                href: "https://harness.io/products/cloud-cost",
+                to: "https://harness.io/products/cloud-cost",
               },
               {
                 label: "Service Reliability Management",
-                href: "https://harness.io/products/service-reliability-management",
+                to: "https://harness.io/products/service-reliability-management",
               },
               {
                 label: "Security Testing Orchestration",
-                href: "https://harness.io/products/security-testing-orchestration",
+                to: "https://harness.io/products/security-testing-orchestration",
               },
               {
                 label: "Chaos Engineering",
-                href: "https://harness.io/products/chaos-engineering",
+                to: "https://harness.io/products/chaos-engineering",
+              },
+              {
+                label: "Continuous Error Tracking",
+                to: "https://www.harness.io/products/continuous-error-tracking",
               },
             ],
           },
@@ -337,35 +346,31 @@ const config = {
             items: [
               {
                 label: "Sign up",
-                href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
+                to: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
               },
               {
                 label: "Slack",
-                href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
               },
               {
                 label: "API Reference",
-                href: "https://apidocs.harness.io/",
-              },
-              {
-                label: "Forum",
-                href: "https://community.harness.io",
-              },
-              {
-                label: "University",
-                href: "https://university.harness.io",
+                to: "https://apidocs.harness.io/",
               },
               {
                 label: "Open Source",
-                href: "https://harness-community.github.io/",
+                to: "https://www.harness.io/open-source",
               },
               {
                 label: "YouTube",
-                href: "https://www.youtube.com/c/Harnessio",
+                to: "https://www.youtube.com/c/Harnessio",
               },
               {
                 label: "Developer Hub GitHub",
-                href: "https://github.com/harness/developer-hub",
+                to: "https://github.com/harness/developer-hub",
+              },
+              {
+                label: "Release Notes",
+                href: "/release-notes/whats-new",
               },
             ],
           },
@@ -378,7 +383,11 @@ const config = {
               },
               {
                 label: "Privacy Policy",
-                href: "https://harness.io/legal/privacy",
+                to: "https://harness.io/legal/privacy",
+              },
+              {
+                label: "Accessibility",
+                to: "legal/accessibility",
               },
               {
                 html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
@@ -393,43 +402,63 @@ const config = {
         theme: darkCodeTheme, // lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      /*
-      algolia: {
-        // The application ID provided by Algolia
-        appId: "HPP2NHSWS8",
-
-        // Public API key: it is safe to commit it
-        apiKey: "26d5fe04a4fb8f356e8f9f79882544c5",
-
-        indexName: "dlp-docs",
-
-        // Optional: see doc section below
-        contextualSearch: true,
-
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        // externalUrlRegex: "developer\\.harness\\.io",
-
-        // Optional: Algolia search parameters
-        searchParameters: {},
-
-        // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: "search",
-
-        //... other Algolia params
-      },
-      */
       colorMode: {
         defaultMode: "light",
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
+      },
+      /*
       announcementBar: {
         id: "support_us",
         content:
-          "Harness Developer Hub is in BETA. Help us improve by providing feedback.",
+          "Welcome to Harness Developer Hub. Help us improve by providing feedback.",
         backgroundColor: "#000000",
         textColor: "#ffffff",
         isCloseable: true,
+      },
+      */
+      announcementBar: {
+        id: "announcementBar_cd_announcement",
+        content:
+          "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>FirstGen Harness CD will be EOL on 12/30/2023 and EOS on 3/30/2024.</span> Learn more in our <a href='/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a>. Contact  <a href='https://support.harness.io' target='_self'>Harness Support</a> with questions or concerns.",
+        backgroundColor: "#FFF5ED",
+        textColor: "#000000",
+        isCloseable: true,
+      },
+      announcementBarByPath: {
+        // list all pathnames in Regular expressions format
+        pathRegExp: [
+          // paths for md-doc pages
+          "^/docs/first-gen/continuous-delivery.*",
+          "^/docs/first-gen/first-gen-quickstarts.*",
+          // paths for category pages
+          "^/docs/category/quickstarts.*",
+          "^/docs/category/continuous-delivery.*",
+          "^/docs/category/continuous-delivery-overview.*",
+          "^/docs/category/general-deployment-features.*",
+          "^/docs/category/deployment-strategies-and-integrations.*",
+          "^/docs/category/aws-.*",
+          "^/docs/category/general-aws-.*",
+          "^/docs/category/azure-.*",
+          "^/docs/category/cicd-artifact-build-and-deploy-pipelines.*",
+          "^/docs/category/google-cloud.*",
+          "^/docs/category/native-helm-deployments.*",
+          "^/docs/category/iis-net-deployments.*",
+          "^/docs/category/kubernetes-deployments.*",
+          "^/docs/category/tanzu-application-service-formerly-pivotal.*",
+          "^/docs/category/terraform-1.*",
+          "^/docs/category/terragrunt.*",
+          "^/docs/category/traditional-deployments-ssh.*",
+          "^/docs/category/custom-deployments.*",
+          "^/docs/category/continuous-verification-1.*",
+          "^/docs/category/model-your-cd-pipeline.*",
+          "^/docs/category/harness-git-based-how-tos.*",
+        ],
       },
       hotjar: {
         siteId: 3194971,
@@ -437,6 +466,13 @@ const config = {
       oneTrust: {
         dataDomainScript: "59633b83-e34c-443c-a807-63232ce145e5",
       },
+      utmCookie: {
+        prefix: "utm_",
+      },
+      munity: {
+        clientId: "b866f690584d8345",
+      },
+
       rss: {
         rssPath: "release-notes/rss.xml",
         rssTitle: "Harness Release Notes",
@@ -447,33 +483,21 @@ const config = {
   plugins: [
     [
       "@docusaurus/plugin-client-redirects",
+      /* externalizing the redirects
       {
-        // fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
-        // toExtensions: ['exe', 'zip'], // /myAsset -> /myAsset.zip (if latter exists)
         redirects: [
           {
             from: "/release-notes",
             to: "/release-notes/whats-new",
           },
-          /* // Redirect from multiple old paths to the new path
           {
-            to: '/docs/newDoc2',
-            from: ['/docs/oldDocFrom2019', '/docs/legacyDocFrom2016'],
-          }, */
+            from: "/docs",
+            to: "/docs/category/documentation",
+          },
         ],
-        /*
-        createRedirects(existingPath) {
-          if (existingPath.includes('/community')) {
-            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
-            return [
-              existingPath.replace('/community', '/docs/team'),
-              existingPath.replace('/community', '/docs/support'),
-            ];
-          }
-          return undefined; // Return a falsy value: no redirect created
-        },
-        */
       },
+      */
+      clientRedirects,
     ],
     [
       "@docusaurus/plugin-content-docs",
@@ -483,6 +507,42 @@ const config = {
         routeBasePath: "tutorials",
         exclude: ["**/shared/**", "**/static/**"],
         sidebarPath: require.resolve("./sidebars-tutorials.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "certifications",
+        path: "certifications",
+        routeBasePath: "certifications",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-certifications.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "kb",
+        path: "kb",
+        routeBasePath: "kb",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-kb.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "community",
+        path: "community",
+        routeBasePath: "community",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-community.js"),
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },
@@ -501,7 +561,10 @@ const config = {
     "docusaurus-plugin-sass",
     path.join(__dirname, "/plugins/hotjar-plugin"),
     path.join(__dirname, "/plugins/onetrust-plugin"),
+    path.join(__dirname, "/plugins/utmcookie-plugin"),
+    path.join(__dirname, "/plugins/munity-plugin"),
   ],
+  clientModules: [require.resolve("./client-modules/DetailsFromDocs")],
 };
 
 module.exports = config;

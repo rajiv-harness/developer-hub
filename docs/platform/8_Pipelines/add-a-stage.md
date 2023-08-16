@@ -1,7 +1,7 @@
 ---
-title: Add a Stage
+title: Add a stage
 description: This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature is coming soon. A Stage is a subset of a Pipeline that contains the logic to p…
-# sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: 2chyf1acil
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -14,14 +14,14 @@ Adding a stage to your Pipeline is the same across all Harness modules (CD, CI, 
 
 The module you select determines the stage settings.
 
-### Before you begin
+## Before you begin
 
-* [Learn Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
-* [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md)
+* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
 
-### Step 1: Create a Pipeline
+## Step 1: Create a Pipeline
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 You can create a Pipeline from any module in your Project, and then add stages for any module.
 
@@ -34,9 +34,10 @@ Click **Pipeline**. The new Pipeline settings appear.
 Enter **Name**, **Description**, **Tags**, **and Timeout** for your Pipeline.
 
 ![](./static/add-a-stage-55.png)
+
 Click **Start**. Now you're ready to add a stage.
 
-### Step 2: Add a Stage
+## Step 2: Add a Stage
 
 Click **Add Stage**. The stage options appear.
 
@@ -44,7 +45,7 @@ Select a stage type and follow its steps.
 
 The steps you see depend on the type of stage you selected.
 
-Don't see the module you want? You can enable modules in your Project Overview. See [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).Enter a name for the stage.
+Don't see the module you want? You can enable modules in your Project Overview. See [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md). Enter a name for the stage.
 
 You can add a name when you create the stage, but you can edit the name in the **Overview** section of the stage anytime.
 
@@ -52,7 +53,7 @@ Changing the stage name doesn't change the stage identifier (Id). The stage iden
 
 For CD stages, you can select a deployment type. A Stage can deploy Services, and other workloads. Select the type of deployment this Stage performs.
 
-### Option: Stage Variables
+## Option: Stage Variables
 
 Once you've created a stage, its settings are in the **Overview** tab. For example, here's the **Overview** tab for a Deploy stage:
 
@@ -79,19 +80,14 @@ You reference stage variables **within their stage** using the expression `<+sta
 
 You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage Id].variables.[variable name]>`.
 
-### Option: Advanced Settings
+## Option: Advanced Settings
 
 In **Advanced**, you can use the following options:
 
 * [Stage Conditional Execution Settings](w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-### Option: Running Stages in Parallel
+## See also
 
-You can drag stages on top of each other to run them in parallel:
-
-![](./static/add-a-stage-57.png)
-### See also
-
-* [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md)
+* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
 

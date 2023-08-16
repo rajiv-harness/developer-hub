@@ -1,7 +1,8 @@
 /* --- Coveo style overwritten ---- */
 #searchBoxCoveo {
-    // width: 400px;
-    width: calc(100vw - 1080px);
+    width: 350px;
+    // width: calc(100vw - 1080px);
+	margin-left: 10px;
 }
 
 #coveo-search-mask{
@@ -36,9 +37,18 @@
         box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.14), 0px 2px 4px rgba(96, 97, 112, 0.26);
 		margin-right: 12px;
 		border-radius: 5px;
+		right: 0;
+		width: 70%;
+		min-width: 800px;
     }
-	.coveo-main-section {
-		display: none;
+	.coveo-facet-column {
+		// display: none;
+	}
+	.coveo-dropdown-header-wrapper {
+		margin-top: 10px;
+		.coveo-facet-dropdown-header:hover {
+			color: var(--white);
+		}
 	}
 }
 
@@ -129,7 +139,11 @@
  .harness-search-source .CoveoFieldValue .coveo-clickable {
 	 color: #000;
 }
- .harness-search-module .CoveoFieldValue {
+.harness-search-module {
+	display: flex;
+    gap: 8px;
+}
+ .harness-search-module .CoveoFieldValue, .harness-search-module .CoveoFieldValue {
 	/* Module Colors/Feature Flags Management/100 */
 	/* Module Colors/Feature Flags Management/200 */
 	 background-color: #fafbfc;
@@ -228,6 +242,21 @@
 	 color: var(--mod-ce-300);
 }
 
+.harness-search-module .CoveoFieldValue.CoveoFieldValueCET {
+	background: var(--mod-cet-100);
+	border: 1px solid var(--mod-cet-200);
+	color: var(--mod-cet-300);
+	&::before {
+		content: url('/img/icon_cet_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueCET .coveo-clickable {
+	color: var(--mod-cet-300);
+}
 .harness-search-module .CoveoFieldValue.CoveoFieldValueSTO {
     background: var(--mod-sto-100);
     border: 1px solid var(--mod-sto-200);
@@ -259,11 +288,95 @@
 .harness-search-module .CoveoFieldValue.CoveoFieldValueSRM .coveo-clickable {
     color: var(--mod-srm-300);
 }
+
+
+.harness-search-module .CoveoFieldValue.CoveoFieldValueSEI {
+	background: var(--mod-sei-100);
+	border: 1px solid var(--mod-sei-200);
+	color: var(--mod-sei-300);
+	&::before {
+		content: url('/img/icon_sei_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueSEI .coveo-clickable {
+	color: var(--mod-sei-300);
+}
+
+// IDP
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIDP {
+	background: var(--mod-idp-100);
+	border: 1px solid var(--mod-idp-200);
+	color: var(--mod-idp-300);
+	&::before {
+		content: url('/img/icon_idp_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIDP .coveo-clickable {
+	color: var(--mod-idp-300);
+}
+
+// IaCM
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIACM {
+	background: var(--mod-iacm-100);
+	border: 1px solid var(--mod-iacm-200);
+	color: var(--mod-iacm-300);
+	&::before {
+		content: url('/img/icon_iacm_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIACM .coveo-clickable {
+	color: var(--mod-iacm-300);
+}
+
+// Gitness
+.harness-search-module .CoveoFieldValue.CoveoFieldValueGitness {
+	background: var(--mod-gitness-100);
+	border: 1px solid var(--mod-gitness-200);
+	color: var(--mod-gitness-300);
+	&::before {
+		content: url('/img/icon_gitness_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueGitness .coveo-clickable {
+	color: var(--mod-gitness-300);
+}
+
+.harness-search-module .CoveoFieldValue.CoveoFieldValuePlatform {
+    &::before {
+        content: url('/img/icon_harness_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+}
  .CoveoResult a.CoveoResultLink, .CoveoResultLink, a.CoveoResultLink {
 	 color: #000;
 	 font-weight: 500;
 	 font-size: 18px;
 	 line-height: 28px;
+}
+
+.CoveoResult .CoveoPrintableUri a.CoveoResultLink {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 18px;
 }
  .CoveoResult a.CoveoResultLink:hover, .CoveoResultLink, a.CoveoResultLink:hover {
 	 color: #0278d5;
@@ -546,6 +659,13 @@
         height: 16px;
         margin-right: 4px;
     }
+	&[title="Continuous Error Tracking"]::before {
+        content: url('/img/icon_cet_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
     &[title="Cloud Cost Management"]::before {
         content: url('/img/icon_ccm_s.svg');
         display: inline-block;
@@ -588,16 +708,89 @@
         height: 16px;
         margin-right: 4px;
     }
+	&[title="Software Engineering Insights"]::before {
+        content: url('/img/icon_sei_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+	&[title="Software Supply Chain Assurance"]::before {
+        content: url('/img/icon_ssca_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+	&[title="Internal Developer Portal"]::before {
+        content: url('/img/icon_idp_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+	&[title="Infrastructure as Code Management"]::before {
+        content: url('/img/icon_iacm_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+	&[title="Gitness"]::before {
+        content: url('/img/icon_gitness_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+    &[title="Harness Platform"]::before {
+        content: url('/img/icon_harness_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+}
+
+/* [HDH-114] Cleaner Difference Between FG and NG Docs */
+.harness-search-module .CoveoFieldValue {
+	&:has(span[title*="FirstGen"]) {
+		background-color: var(--gray-200);
+		border-color: var(--gray-200);
+	}
+	&:has(span[title*="NextGen"]) {
+		background-color: var(--primary-3);
+		border-color: var(--primary-3);
+	}
 }
 
 .CoveoLogo {
     display: none !important;
 }
 
-@media screen and (max-width: 1199px) {
+/* TBD: needs a better design/solution for the responsiveness of the navbar */
+@media screen and (max-width: 1499px) {
     #searchBoxCoveo {
+		width: 250px;
+    }
+}
 
-		width: calc(100vw - 1025px);
+@media screen and (max-width: 1399px) {
+    #searchBoxCoveo {
+		width: 200px;
+    }
+}
+
+@media screen and (max-width: 1349px) {
+    #searchBoxCoveo {
+		width: 150px;
+    }
+}
+
+@media screen and (max-width: 1299px) {
+    #searchBoxCoveo {
+		// width: calc(100vw - 1025px);
+		width: 120px;
         .CoveoSearchButton {
             display: none;
         }
@@ -605,77 +798,81 @@
             font-size: 14px;
         }
     }
+	.navbar__logo {
+		display: flex;
+		align-items: center;
+		& > img {
+			width: 70%;
+			height: auto;
+		}
+	}
 }
 
-@media screen and (min-width: 997px) and (max-width: 1060px) {
-    #searchBoxCoveo {
-		display: none
+@media screen and (max-width: 1179px) {
+    .navbar__items {
+		font-size: 14px;
+		.button--cta, .button--primary {
+			font-size: 14px;
+			padding-left: 1em;
+			padding-right: 1em;
+		}
     }
+}
+
+@media screen and (max-width: 1079px) {
+    #searchBoxCoveo {
+		width: 80px;
+		// display: none
+		.magic-box-input > input {
+            font-size: 12px;
+        }
+    }
+	.magic-box .magic-box-clear {
+		// height: 12px !important;
+		width: 14px !important;
+		// line-height: 12px !important;
+	}
+	.CoveoSearchbox .magic-box .magic-box-clear-svg {
+		width: 8px !important;
+		// height: 10px !important;
+	}
+	.magic-box .magic-box-input .magic-box-underlay, .magic-box .magic-box-input>input {
+		padding: 12px 14px 12px 6px !important;
+	}
+	.magic-box .magic-box-suggestions {
+		min-width: 200px;
+	}
+}
+
+@media screen and (max-width: 1039px) {
+	.navbar__logo {
+		& > img {
+			width: 57%;
+		}
+	}
 }
 
 @media screen and (max-width: 996px) {
-    #searchBoxCoveo {
-        width: 300px;
-    }
-	#searchResultsCoveo .coveo-search-results {
-		left: 15px;
-		width: calc(100vw - 30px);
-	}
-	#coveo-search {
-		min-width: unset;
-	}
-}
-
-@media screen and (max-width: 834px) {
-	 .coveo-result-frame .coveo-result-row, .CoveoResult.coveo-result-frame .coveo-result-row {
-		 display: block;
-	}
-}
-
-@media screen and (max-width: 678px) {
-    #searchBoxCoveo {
-        width: 300px;
+	.navbar #searchBoxCoveo {
 		display: none;
     }
-}
-
-/*
-@media screen and (max-width: 1058px) {
-    #searchBoxCoveo {
-
-		width: calc(100vw - 880px);
-        .CoveoSearchButton {
-            display: none;
-        }
-        .magic-box-input > input {
-            font-size: 14px;
-        }
+	.navbar .navbar-sidebar #searchBoxCoveo {
+        width: 96%;
+		display: block;
     }
-}
 
-@media screen and (max-width: 996px) {
-    #searchBoxCoveo {
-        width: 300px;
-    }
 	#searchResultsCoveo .coveo-search-results {
-		left: 15px;
-		width: calc(100vw - 30px);
+		top: 222px; // 195px; // 50px;
+		margin-right: 0;
+		z-index: 1;
+		min-width: var(--ifm-navbar-sidebar-width);
 	}
-	#coveo-search {
+	#searchResultsCoveo #coveo-search {
 		min-width: unset;
 	}
-}
-
-@media screen and (max-width: 834px) {
-	 .coveo-result-frame .coveo-result-row, .CoveoResult.coveo-result-frame .coveo-result-row {
-		 display: block;
+	.navbar__logo {
+		& > img {
+			width: 100%;
+		}
 	}
 }
-
-@media screen and (max-width: 678px) {
-    #searchBoxCoveo {
-        width: 300px;
-		display: none;
-    }
-}
-*/

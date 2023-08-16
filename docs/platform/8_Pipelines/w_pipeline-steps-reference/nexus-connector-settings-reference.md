@@ -1,5 +1,5 @@
 ---
-title: Nexus Connector Settings Reference
+title: Nexus connector settings reference
 description: This topic provides settings and permissions for the Nexus Connector. In this topic --  Nexus Permissions Required. Artifact Type Support. Docker Support. Nexus Artifact Server Name. ID. Description. Ta…
 # sidebar_position: 2
 helpdocs_topic_id: faor0dc98d
@@ -18,12 +18,12 @@ Ensure the connected user account has the following permissions in the Nexus Ser
 * Nexus UI: Repository Browser
 
 ![](./static/nexus-connector-settings-reference-05.png)
-If used as a Docker Repo, the user needs:
-
-* List images and tags
-* Pull images
 
 See [Nexus Managing Security](https://help.sonatype.com/display/NXRM2/Managing+Security).
+
+For Nexus 3, when used as a **Docker** repo, the user needs:
+
+- A role with the `nx-repository-view-*_*_*` privilege.
 
 ### Artifact Type Support
 
@@ -65,7 +65,9 @@ See [Tags Reference](../../20_References/tags-reference.md).
 
 #### Nexus Repository URL
 
-The URL that you use to connect to your Nexus server. For example, `https://nexus3.dev.mycompany.io`.
+The URL that you use to connect to your Nexus server. For example, `https://nexus3.dev.mycompany.io/repository/your-repo-name`.
+
+![](./static/nexus-repository.png)
 
 #### Version
 
@@ -77,7 +79,7 @@ For Nexus 3.x, Harness supports only the Docker repository format as the artifac
 
 The username and password for the Nexus account.
 
-The password uses a [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md).
+The password uses a [Harness Encrypted Text secret](../../Secrets/2-add-use-text-secrets.md).
 
 ### Nexus Artifact Details
 

@@ -1,7 +1,7 @@
 ---
-title: Input Sets and Overlays
+title: Input sets and overlays
 description: Input Sets are collections of runtime variables and values. Overlays are groups of Input Sets.
-# sidebar_position: 2
+sidebar_position: 5
 helpdocs_topic_id: 3fqwa8et3d
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
@@ -29,6 +29,7 @@ Looking for the How-to? See [Run Pipelines using Input Sets and Overlays](run-pi
 Nearly every setting in a Pipeline can be configured as a runtime input. You can then create an Input Set from those inputs.
 
 ![](./static/input-sets-05.png)
+
 Here are some Input Set examples:
 
 * Values of fields and variables
@@ -48,7 +49,7 @@ Input sets group the values of these entities and make it easy provide the corre
 You can add several Input Sets as an Overlay. Overlays are use when:
 
 * The Pipeline is used for multiple Services.
-* The Services have some configurations in common but some have differences. For example:
+* The Services have some configurations in common, but some have differences. For example:
 	+ Same configuration but using different runtime variables.
 	+ Same artifact stream.
 

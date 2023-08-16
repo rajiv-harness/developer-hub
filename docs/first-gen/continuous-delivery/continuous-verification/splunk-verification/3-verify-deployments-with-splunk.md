@@ -165,7 +165,7 @@ To use **Guide From Example** for a host or container name expression, do the fo
 
 In the **Guide From Example** section above we used a **host** example for the **Expression for Host/Container name** field, but if the Workflow is deploying Kubernetes, you will likely use **pod** or **pod\_name** or a custom label.
 
-For Kubernetes deployments, your Splunk account must perform Kubernetes log collection. This is typically done using [Splunk Connect for Kubernetes](https://github.com/splunk/splunk-connect-for-kubernetes). For information on using Splunk Connect, see [Deploy Splunk Enterprise on Kubernetes](https://www.splunk.com/blog/2018/12/17/deploy-splunk-enterprise-on-kubernetes-splunk-connect-for-kubernetes-and-splunk-insights-for-containers-beta-part-1.html) on the Splunk Blog.
+For Kubernetes deployments, your Splunk account must perform Kubernetes log collection. This is typically done using [Splunk Connect for Kubernetes](https://github.com/splunk/splunk-connect-for-kubernetes). For information on using Splunk Connect, see [Deploy Splunk Enterprise on Kubernetes](https://www.splunk.com/en_us/blog/platform/introducing-splunk-operator-for-kubernetes-2-0.html) on the Splunk Blog.
 
 In addition, the Splunk [fields.conf](https://docs.splunk.com/Documentation/ITSI/4.2.1/Configure/fields.conf) file should contain the following fields in order to search Kubernetes logs in Splunk:
 
@@ -192,7 +192,7 @@ Ensure that your Kubernetes deployment is set up to log what you need. See [Logg
 
 ### Review: Harness Expression Support in CV Settings
 
-You can use expressions (`${...}`) for [Harness built-in variables](https://docs.harness.io/article/7bpdtvhq92-workflow-variables-expressions) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
+You can use expressions (`${...}`) for [Harness built-in variables](../../kubernetes-deployments/workflow-variables-expressions.md) and custom [Service](../../model-cd-pipeline/setup-services/service-configuration.md) and [Workflow](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) variables in the settings of Harness Verification Providers.
 
 ![](./static/3-verify-deployments-with-splunk-27.png)
 
@@ -247,6 +247,6 @@ To learn about the verification analysis features, see the following sections.
 
 ### Next Steps
 
-* [Configuration as Code](https://docs.harness.io/article/htvzryeqjw-configuration-as-code)
-* [Users and Permissions](https://docs.harness.io/article/ven0bvulsj-users-and-permissions)
+* [Configuration as Code](../../../firstgen-platform/config-as-code/configuration-as-code.md)
+* [Users and Permissions](../../../firstgen-platform/security/access-management-howtos/users-and-permissions.md)
 

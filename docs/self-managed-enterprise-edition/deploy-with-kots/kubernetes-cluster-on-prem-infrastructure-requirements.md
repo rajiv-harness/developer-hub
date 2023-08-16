@@ -1,12 +1,23 @@
 ---
-title: Infrastructure requirements for KOTS
-description: This document lists the infrastructure requirements for installing Harness Self-Managed Enterprise Edition
-# sidebar_position: 2
+title: KOTS installation requirements
+description: Requirements for using KOTS installation for Harness Self-Managed Enterprise Edition.
+sidebar_position: 1
 helpdocs_topic_id: d5lptkp5ow
 helpdocs_category_id: vu99714ib1
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+:::info note
+
+This is an End of Life (EOL) notice for the KOTS installation method. This method will be in maintenance mode after May 31, 2023. 
+
+Maintenance mode means the following:
+
+- No new features will be added.
+- Security and bug fixes will continue to be made. 
+
+:::
 
 Installation of Harness Self-Managed Enterprise Edition in an existing Kubernetes cluster requires the following infrastructure.
 
@@ -94,9 +105,9 @@ A Proof of Concept (PoC) installation of Self-Managed Enterprise Edition require
 | **Timescale DB** | 1 | 20 GB | 20 GB |
 | **Redis** | n/a | n/a | 30 GB |
 
-## Allow list and outbound access requirements
+## Allowlist and outbound access requirements
 
-Add the following URLs to your allow list:
+Add the following URLs to your allowlist:
 
 | **URL** | **Usage** |
 | :-- | :-- |
@@ -131,7 +142,7 @@ The installation of Harness Self-Managed Enterprise Edition requires a load bala
 
 After Harness Self-Managed Enterprise Edition is installed, the load balancer is used to access the Harness Manager UI with a web browser.
 
-For information on how to create the load balancer, see [Self-Managed Enterprise Edition - Kubernetes Cluster: Setup Guide](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md).
+For information on how to create the load balancer, go to [Install Self-Managed Enterprise Edition with KOTS](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md).
 
 ### gRPC and load balancer settings
 

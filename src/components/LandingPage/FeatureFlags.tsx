@@ -1,47 +1,13 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
-import TutorialCard, { CardItem, docType } from "./TutorialCard";
-
-/* Define the cards here */
-const FeaturedList: CardItem[] = [
-  {
-    title: "TypeScript and React Feature Flags",
-    module: "ff",
-    icon: "/img/icon_ff.svg",
-    description: (
-      <>
-        Walks you through adding JavaScript Feature Flags to a TypeScript and
-        React Application.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
-  },
-];
-
-const FFList: CardItem[] = [
-  {
-    title: "TypeScript and React Feature Flags",
-    module: "ff",
-    icon: "/img/icon_ff.svg",
-    description: (
-      <>
-        Walks you through adding JavaScript Feature Flags to a TypeScript and
-        React Application.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
-  },
-];
+import TutorialCard from "./TutorialCard";
+import { FeaturedList, FFList } from "./data/featureFlagsData";
 
 export default function FF() {
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="FF" description="FF">
     //   <ul className={styles.breadCrumb}>
@@ -49,17 +15,16 @@ export default function FF() {
     //     <li>Manage feature flags</li>
     //   </ul>
     <div className="container">
-      <img src="/img/ff.svg" />
       <div className={styles.SectionName}>
-        <h3>Manage Feature Flags</h3>
+        <h3>Rollout new features progressively</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src="/img/icon_ff.svg" />
+            <img src={`${baseUrl}img/icon_ff.svg`} />
             <h1>Feature Flags</h1>
           </div>
-          <div>
+          <div className={styles.btnContainer}>
             <Link href="/docs/feature-flags">
               <button
                 className={clsx(
@@ -68,13 +33,29 @@ export default function FF() {
                   styles.btnLight
                 )}
               >
-                <img src="/img/icon_document.png" /> Documentation
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_documentation.svg`} />
+                Documentation
+              </button>
+            </Link>
+
+            <Link href="/release-notes/feature-flags">
+              <button
+                className={clsx(
+                  "button button--lg",
+                  styles.btn,
+                  styles.btnLight
+                )}
+              >
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_release_notes.svg`} />
+                Release Notes
               </button>
             </Link>
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div>
+          <div className={styles.content}>
             <p>
               Harness Feature Flags (FF) is a feature management solution that
               lets you change your software's functionality without deploying
@@ -82,19 +63,20 @@ export default function FF() {
               without having to ship new versions of the software. A feature
               flag is like a powerful if statement.
             </p>
-            <img src="/img/ff_flow.svg" className={styles.ff_img} />
             <div className={styles.alignCenter}>
               <Link
                 className={clsx("button button--lg", styles.btn, styles.btnFF)}
                 to="#all-tutorials"
               >
-                FF Tutorials
-                <img src="/img/Stroke.svg" />
+                Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
               <Link href="https://harness.io/products/feature-flags">
-                <button className={styles.link}>Learn more about FF</button>
+                <button className={styles.link}>Learn more</button>
               </Link>
             </div>
+          </div>
+          <div>
+            <img src={`${baseUrl}img/ff.svg`} />
           </div>
         </div>
       </div>

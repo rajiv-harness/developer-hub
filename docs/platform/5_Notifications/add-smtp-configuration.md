@@ -1,5 +1,5 @@
 ---
-title: Add SMTP Configuration
+title: Add SMTP configuration
 description: Explains how to configure SMTP for email-based deployment notifications, approvals, and tracking.
 # sidebar_position: 2
 helpdocs_topic_id: d43r71g20s
@@ -19,11 +19,11 @@ If you are using the Harness On-Prem offering, then you will need to add an SMTP
 
 ### Before you begin
 
-* [User Group Notification Preferences](../4_Role-Based-Access-Control/4-add-user-groups.md#option-notification-preferences)
+* [User Group Notification Preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences)
 
 ### Limitations
 
-Configuring your SMTP server is required only if you are using [Harness On-Prem](https://docs.harness.io/article/tb4e039h8x-harness-on-premise-overview), or if you wish to use your own SMTP server instead of the Harness SaaS default SMTP option.
+Configuring your SMTP server is required only if you are using [Harness On-Prem](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md), or if you wish to use your own SMTP server instead of the Harness SaaS default SMTP option.
 
 ### Step 1: Add SMTP Configuration
 
@@ -57,10 +57,19 @@ Click **Continue**.
 
 Enter the username and password for the email account.
 
-![](./static/add-smtp-configuration-02.png)
+![](./static/add-smtp-configuration-credentials.png)
+
+Click **Continue**.
+
+### Step 4: Delegate Setup
+
+In **Delegates Setup**, use [**Selectors**](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#selecting-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** you want to use.
+
+![](./static/smtp-delegate.png)
+
 Click **Save and Continue**.
 
-### Step 4: Test Connection
+### Step 5: Test Connection
 
 In **To,** enter the email address to which you want to send notifications.
 

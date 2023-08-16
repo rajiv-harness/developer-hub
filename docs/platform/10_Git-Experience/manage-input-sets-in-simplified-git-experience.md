@@ -1,7 +1,7 @@
 ---
-title: Manage Input Sets and Triggers in Git Experience
+title: Manage input sets and triggers in Git Experience
 description: Once you have saved your Pipeline in your repo, you can set up your Input Sets and Triggers. You can set up your Input Set definitions in your repo along with your Pipeline. You can then set up your…
-# sidebar_position: 2
+sidebar_position: 9
 helpdocs_topic_id: 8tdwp6ntwz
 helpdocs_category_id: rv2jo2hoiy
 helpdocs_is_private: false
@@ -13,14 +13,14 @@ Once you have saved your Pipeline in your repo, you can set up your Input Sets 
 This topic covers a simple workflow for setting up your Input Sets and Triggers. It does not cover these topics in detail. For details on those, see:
 
 * [Run Pipelines using Input Sets and Overlays](../8_Pipelines/run-pipelines-using-input-sets-and-overlays.md)
-* [Trigger Pipelines using Git Event Payloads](../11_Triggers/trigger-pipelines-using-custom-payload-conditions.md)
+* [Trigger Pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/)
 
 ### Before you begin
 
 You'll need the following:
 
 * A Git repo with at least one branch and a Personal Access Token (PAT) for your account. Harness needs the PAT to use the Git platform APIs. The PAT is encrypted using a Harness Secret Manager. Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.Make sure your repo has at least one branch, such as main or master. For most Git providers, you simply add a README file to the repo, and the branch is created.
-* A Harness Pipeline with Git Experience enabled. In this how-to, you will cross-check your updates in both your codebase and in the Harness UI. See [Harness Git Experience QuickStart](https://newdocs.helpdocs.io/article/grfeel98am/preview).
+* A Harness Pipeline with Git Experience enabled. In this how-to, you will cross-check your updates in both your codebase and in the Harness UI. See [Harness Git Experience QuickStart](configure-git-experience-for-harness-entities.md).
 
 ### Initial setup
 
@@ -58,7 +58,7 @@ In the Run Pipeline screen, click **Cancel**.
 
 Now that you have a Pipeline and Input Set in your default branch, create a Trigger that uses the Input Set you just created.
 
-In the Pipeline Studio, create a new Trigger as described in [Trigger Pipelines using Git Event Payload Conditions](../11_Triggers/trigger-pipelines-using-custom-payload-conditions.md).
+In the Pipeline Studio, create a new Trigger as described in [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/triggering-pipelines/).
 
 In the Pipeline Input tab, select the Input Set you just created and click **Create Trigger**.
 
@@ -94,7 +94,7 @@ In this step, you will create a Trigger specifically for the new branch. Do the 
 
 * In the Configuration tab, include the branch in the trigger name. For example, **build-on-push-to-my-new-feature-branch**.
 * In the Conditions tab, set the Condition to trigger on the specified branch only. If you want to trigger on a Pull Request, for example, set the Target Branch field to `my-new-feature-branch`.  
-You might also want to set the Changed Files field to exclude the .harness folder. This will ensure that updates to your Harness configs don't trigger unwanted builds.
+You might also want to set the Changed Files field to exclude the `.harness` folder. This will ensure that updates to your Harness configs don't trigger unwanted builds.
 
   ![](./static/manage-input-sets-in-simplified-git-experience-12.png)
 

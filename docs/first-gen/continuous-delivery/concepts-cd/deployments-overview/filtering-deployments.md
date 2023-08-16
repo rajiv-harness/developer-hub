@@ -8,15 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/phiv0zaoex).You can filter deployments on the the Deployments page according to multiple criteria.
+This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments.md).You can filter deployments on the the Deployments page according to multiple criteria.
 
 You can save these filters as a quick way to filter deployments in the future.
 
-
 ### Before You Begin
 
-* [Deployments Overview](deployments-overview.md)
-* [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts)
+- [Deployments Overview](deployments-overview.md)
+- [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Limitations
 
@@ -36,7 +35,7 @@ In **Filter by Deployment Tag**, enter one or more Tags in your account's **Tags
 
 You can enter a Tag name, name:value pair, or evaluated expression.
 
-See [Assign Metadata Using Tags](https://docs.harness.io/article/nrxfix3i58-tags), [Use Expressions in Workflow and Pipeline Tags](https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags), and [Apply Filters Using Tags](https://docs.harness.io/article/nyxf7g8erd-apply-filters-using-tags).
+See [Assign Metadata Using Tags](../../../firstgen-platform/account/tags/tags.md), [Use Expressions in Workflow and Pipeline Tags](../../../firstgen-platform/account/tags/use-expressions-in-workflow-and-pipeline-tags.md), and [Apply Filters Using Tags](../../../firstgen-platform/account/tags/apply-filters-using-tags.md).
 
 ### Option 2: Filter by Applications
 
@@ -63,3 +62,28 @@ In **Filter Name**, enter a name for the filter and click **Save**.
 The filter is now available from the **Load Saved Filter**:
 
 ![](./static/filtering-deployments-07.png)
+
+### Quickly filter by environment
+
+:::note
+
+Currently, this feature is behind the feature flag `SPG_ENABLE_STATUS_OF_DEPLOYMENTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can quickly filter environments by selecting specific environments using the filter menu:
+
+![](./static/filtering-deployments-08.png)
+
+
+### Sharing filters
+
+:::note
+
+Currently, this feature is behind the feature flag `SPG_ENABLE_SHARING_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+If you are a Harness Account Manager, you can user the **Share filter with these User Groups** setting to select the user groups that can see a filter. All the users in that user group will be able to use the saved filter, but they won't be able to delete it. Users belonging to other user groups won't see the filter.
+
+![](./static/sharing-filter.png)

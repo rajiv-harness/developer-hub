@@ -1,282 +1,416 @@
 ---
-title: Build and Push an Artifact
-description: Once you've defined a build farm in the CI stage's Infrastructure, you can add a Build and Push step to build your codebase and push the artifact to a repo. The following repos are supported &#8212;  Docker.…
-tags: 
-   - helpDocs
-sidebar_position: 20
+title: Build and push an artifact
+description: Add a Build and Push step to build and push an artifact to a repo.
+sidebar_position: 10
 helpdocs_topic_id: 8l31vtr4hi
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Once you've defined a build farm in the CI stage's Infrastructure, you can add a Build and Push step to build your codebase and push the artifact to a repo. The following repos are supported:
+Add a **Build and Push** step to your CI pipeline to build your codebase and then push the artifact, such as a Docker image, to a repo. The following repos are supported:
 
+* [Docker Hub](./build-and-push-to-docker-hub-step-settings.md)
+* [Azure Container Registry (ACR)](./build-and-push-to-acr.md)
+* [Google Container Registry (GCR)](./build-and-push-to-gcr.md)
+* [Amazon Elastic Container Registry (ECR)](./build-and-push-to-ecr-step-settings.md)
+* [Google Artifact Registry (GAR)](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps)
 
-* Docker
-* Azure Container Registry (ACR)
-* Google Container Registry (GCR)
-* Amazon Elastic Container Registry (ECR)
+Harness CI also supports uploading any build artifacts to cloud storage:
 
+* [Upload Artifacts to JFrog](./upload-artifacts-to-jfrog.md)
+* [Upload Artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md)
+* [Upload Artifacts to S3](./upload-artifacts-to-s-3-step-settings.md)
+* [Upload Artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md)
 
-For setting up a build farm, see: [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure).
+<details>
+<summary>Video summary</summary>
 
-
-This topic describes a simple one-step build workflow, minus testing: build the code in a build farm and then push it to a repo. For a quick summary of a build, push, and test Pipeline, see [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md).
-
-
-For details about each build and push step, see [CI Technical Reference](https://docs.harness.io/category/ci-technical-reference).
-
-
-### Before You Begin
-
-
-You should be familiar with the following:
-
-
-* [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
-
-
-### Visual Summary
-
-
-Here's a short video showing how to set up a Build and Push step.
+The following video provides a visual summary of the process described in this topic.
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/embed/v3A4kF1Upqo?feature=oembed" />
 
-
 <!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/v3A4kF1Upqo/hqdefault.jpg"><iframe width="200" height="150" src="https://www.youtube.com/embed/v3A4kF1Upqo?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div -->
 
-
-
-### Step 1: Create the CI Stage
-
-
-In your Harness Pipeline, click **Add Stage**, and then click **CI**.
-
-
-### Step 2: Add the Codebase
-
-
-Do one of the following:
-
-
-* If this is the first CI stage in the Pipeline, in the CI stage settings, enable **Clone Codebase**.
-* If you have an existing Pipeline with a CI stage, click **Codebase** on the right.
-
-
-In **Connector**, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](https://docs.harness.io/category/xyexvcc206-ref-source-repo-provider).
-
-
-You can see the URL for the repo account below **Repository Name**. Don't add the URL into **Repository Name**.
-
-
-In **Repository Name**, enter the name of the repo containing the codebase.
-
-
-For example, if the account URL is `https://github.com/mycompany` and the repo in that account is `myapp`, you can simply enter `myapp` in **Repository Name**.
-
-
-You specify the codebase repo here, but you enter the Git branch or tag when you deploy the Pipeline.
-
-
-### Step 3: Define the Build Farm Infrastructure
-
-
-In the CI stage **Infrastructure**, define the build farm for the codebase.
-
-
-The following example uses a Kubernetes cluster build farm.
-
-
-In **Select a Kubernetes Cluster**, select or create a Kubernetes Connector. This Connector connects Harness to the cluster to use as the build farm. See [Kubernetes Cluster Connector Settings Reference](https://docs.harness.io/article/sjjik49xww-kubernetes-cluster-connector-settings-reference).
-
-
-In **Namespace**, enter the Kubernetes namespace to use. You can use a text string, a Runtime Input (`<+input>`), or an expression. See [Runtime Inputs](https://docs.harness.io/article/f6yobn7iq0-runtime-inputs).
-
-
-See [Define Kubernetes Cluster Build Infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
-
-
-### Step 4: Add the Build and Push Step
-
-
-In the stage's **Execution**, add a Build and Push step. See the following topics, based on the registry provider:
-
-
-* Docker: [Build and Push to Docker Registry Step](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
-* Azure Container Registry (ACR): Use [Build and Push to Docker Registry Step](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
-* Google Container Registry (GCR): [Build and Push to GCR Step](../../ci-technical-reference/build-and-push-to-gcr-step-settings.md)
-* Amazon Elastic Container Registry (ECR): [Build and Push to ECR Step Settings](../../ci-technical-reference/build-and-push-to-ecr-step-settings.md)
-
-
-For all Build and Push steps, you select or create a Connector for the target repo, add repo-specific information, and specify Dockerfile information.
-
-
-#### Option: Add a Tag using Harness Expression
-
-
-When you push the image to a repo, you tag the image so you can identify it later.
-
-
-For example, in one stage you push the image, and in a future stage you pull it using its name and tag so you can run integration tests on it.
-
-
-You can tag the image in any way, but a Harness expression can be very useful.
-
-
-Let's look at an example:
-
-
-![](./static/build-and-upload-an-artifact-10.png)
-
-The `<+pipeline.sequenceId>` tags this image in future stages. For example, `harnessdev/ciquickstart:<+pipeline.sequenceId>`.
-
-
-In the [Configure Service Dependency](../../ci-technical-reference/configure-service-dependency-step-settings.md) Step in a later Stage in the Pipeline, you identify the image location using `<+pipeline.sequenceId>`.
-
-
-
-![](./static/build-and-upload-an-artifact-11.png)
-
-The `<+pipeline.sequenceId>` is a built-in Harness variable that represents the **Build ID** number, for example `Build ID: 9`.
-
-
-After the Pipeline runs you'll see a Build ID:
-
-
-![](./static/build-and-upload-an-artifact-15.png)
-
-And this Build ID tags the image you push in one stage of your Pipeline, and pull in the image in future stages of your Pipeline.
-
-
-You'll also see the ID as the tag on the image in your repo:
-
-
-
-![](./static/build-and-upload-an-artifact-12.png)
-
-#### Option: Build a Docker Image without Pushing
-
-
-Suppose you want to test the Dockerfile used in your Codebase and verify that the resulting image is correct, before you push it to your Docker repository. To enable this in your Pipeline, do the following.
-
-
-1. In your CI Pipeline, go to the Build Stage that includes the Build and Push an Image to Docker Repository step that you want to customize.
-2. In the Build Stage Overview, expand the Advanced pane.
-3. Click Add Variable and enter the following:
-	1. NAME = **PLUGIN\_NO\_PUSH**
-	2. TYPE = **String**
-	3. VALUE = **true**
-4. Save and run the Pipeline.
-
-
-### Step 5: Specify Codebase Branch or Tag at Pipeline Execution
-
-
-Once you click **Run Pipeline**, provide the Git branch or tag to use for the execution.
-
+</details>
+
+## Add the Build and Push step
+
+These steps describe how to create a simple one-step Build stage that does not include testing. It builds the code in a build farm, and then pushes it to a Docker repo.
+
+:::info Kubernetes cluster build infrastructures
+
+With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image. It doesn't support non-root users.
+
+If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
+
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+
+:::
+
+1. Go to **Pipelines** and create a pipeline or edit an existing pipeline. If you're not familiar with creating pipelines, go to the [CI pipeline creation overview](../prep-ci-pipeline-components.md).
+2. Configure the pipeline's codebase, if you have not already done so. For details, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+
+   :::tip
+
+   The codebase configuration specifies the repo to use for this pipeline. When you run the pipeline, you specify the specific branch or commit to use for that build.
+
+   :::
+
+3. If your pipeline doesn't already have a **Build** stage, select **Add Stage**, and then select **Build**.
+4. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md). For details about all infrastructure settings, go to [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
+5. In the **Build** stage's **Execution** tab, select **Add Step**, and then select a **Build and Push** step from the Step Library.
+
+   For all **Build and Push** steps, you select or create a connector for the target repo, add repo-specific information, and specify Dockerfile information. For information about each **Build and Push** step's settings, go to the topic that corresponds with your registry provider:
+
+   * Docker: [Build and Push an image to Docker Registry step settings](./build-and-push-to-docker-hub-step-settings.md)
+   * Azure Container Registry (ACR): [Build and Push to ACR step settings](./build-and-push-to-acr.md) or [Build and Push an image to Docker Registry step settings](./build-and-push-to-docker-hub-step-settings.md)
+   * Google Container Registry (GCR): [Build and Push to GCR step settings](./build-and-push-to-gcr.md)
+   * Amazon Elastic Container Registry (ECR): [Build and Push to ECR step settings](./build-and-push-to-ecr-step-settings.md)
+   * Google Artifact Registry (GAR): Use a **Run** step, as described in the [GAR CI tutorial](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps).
+
+6. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
+
+<details>
+<summary>YAML example: CI pipeline with a Build and Push step</summary>
+
+Here's a YAML example of a CI pipeline that has a **Build** stage with a **Build and Push** step:
+
+```yaml
+pipeline:
+  name: CI Quickstart
+  identifier: CI_Quickstart
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.CI_Quickstart
+        repoName: goHelloWorldServer
+        build: <+input>
+  stages:
+    - stage:
+        name: Build Test and Push
+        identifier: Build_Test_and_Push
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: Build and push image to Docker Hub
+                  identifier: Build_and_push_image_to_Docker_Hub
+                  spec:
+                    connectorRef: account.Docker_Quickstart
+                    repo: cretzman/ciquickstart
+                    tags:
+                      - <+pipeline.sequenceId>
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.cidelegate
+              namespace: harness-delegate-uat
+  projectIdentifier: CI_Quickstart
+  orgIdentifier: default
+```
+
+</details>
+
+## Run the pipeline
+
+Select **Run Pipeline** to run your pipeline. Depending on your pipeline's codebase configuration, you may need to select a Git branch or tag to use for the build.
 
 ![](./static/build-and-upload-an-artifact-13.png)
 
-Enter the branch or tag and click **Run Pipeline**.
-
-
-### Step 6: View the Results
-
-
-You can see the logs for the Build and Push Step in the Pipeline as it runs.
-
-
-Here's an example that pushes to a Docker repository:
-
+While the build runs, you can monitor the **Build and Push** step logs. For example, these are the logs for a step that pushed to a Docker repo in a pipeline using a Kubernetes cluster build infrastructure:
 
 ```
-/kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=cretzman/ciquickstart:13  
-  
-Retrieving image manifest alpine:3.12          
-Retrieving image alpine:3.12                   
-Retrieving image manifest alpine:3.12          
-Retrieving image alpine:3.12                   
-Built cross stage deps: map[]                  
-Retrieving image manifest alpine:3.12          
-Retrieving image alpine:3.12                   
-Retrieving image manifest alpine:3.12          
-Retrieving image alpine:3.12                   
-Executing 0 build triggers                     
-Unpacking rootfs as cmd ADD go-sample-app /bin/ requires it.   
-LABEL maintainer="John Doe <john.doe@example.com>"   
-Applying label maintainer=John Doe <john.doe@example.com>   
-Using files from context: [/step-exec/workspace/go-sample-app]   
-ADD go-sample-app /bin/               
-Taking snapshot of files...                    
+/kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=cretzman/ciquickstart:13
+Retrieving image manifest alpine:3.12
+Retrieving image alpine:3.12
+Retrieving image manifest alpine:3.12
+Retrieving image alpine:3.12
+Built cross stage deps: map[]
+Retrieving image manifest alpine:3.12
+Retrieving image alpine:3.12
+Retrieving image manifest alpine:3.12
+Retrieving image alpine:3.12
+Executing 0 build triggers
+Unpacking rootfs as cmd ADD go-sample-app /bin/ requires it.
+LABEL maintainer="John Doe <john.doe@example.com>"
+Applying label maintainer=John Doe <john.doe@example.com>
+Using files from context: [/step-exec/workspace/go-sample-app]
+ADD go-sample-app /bin/
+Taking snapshot of files...
 ENTRYPOINT ["/bin/go-sample-app"]
 ```
 
-
-On Docker Hub, you can see the image that you pushed.
-
-
+If the build succeeds, you can find the pushed image in your image repo:
 
 ![](./static/build-and-upload-an-artifact-14.png)
 
-In your Harness project's **Builds**, you can see the build listed.
+The build is also listed in your Harness project's **Builds**.
 
+## Useful techniques
 
-### Configure As Code
+Here are some interesting ways you can use or enhance **Build and Push** steps.
 
+### Use Harness expressions for tags
 
-Here's an example of the stage with a Build and Push step set up:
+When you push an image to a repo, you tag the image so you can identify it later. For example, in one pipeline stage, you push the image, and, in a later stage, you use the image name and tag to pull it and run integration tests on it.
 
+There are several ways to tag images, but Harness expressions can be useful.
 
+![](./static/build-and-upload-an-artifact-10.png)
+
+For example, `<+pipeline.sequenceId>` is a built-in Harness expression that represents the **Build Id** number, for example `9`.
+
+After the pipeline runs, you can see the `Build Id` in the output.
+
+![](./static/build-and-upload-an-artifact-15.png)
+
+The ID also appears as an image tag in your target image repo:
+
+![](./static/build-and-upload-an-artifact-12.png)
+
+The `Build Id` tags an image that you pushed in an earlier stage of your pipeline. You can use the `Build Id` to pull the same image in later stages of the same pipeline. By using a variable expression, rather than a fixed value, you don't have to use the same image name every time.
+
+For example, you can use the `<+pipeline.sequenceId>` expression as a variable tag to reference images in future pipeline stages by using syntax such as: `harnessdev/ciquickstart:<+pipeline.sequenceId>`.
+
+As a more specific example, if you have a [Background step](../manage-dependencies/background-step-settings.md) in a later stage in your pipeline, you can use the `<+pipeline.sequenceId>` variable to identify the image without needing to call on a fixed value.
+
+![](./static/build-and-upload-an-artifact-11.png)
+
+### Build a Docker image without pushing
+
+You can use your CI pipeline to test a Dockerfile used in your codebase and verify that the resulting image is correct before you push it to your Docker repository.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 ```
-pipeline:  
-  name: CI Quickstart  
-  identifier: CI_Quickstart  
-  properties:  
-    ci:  
-      codebase:  
-        connectorRef: account.CI_Quickstart  
-        repoName: goHelloWorldServer  
-        build: <+input>  
-  stages:  
-    - stage:  
-        name: Build Test and Push  
-        identifier: Build_Test_and_Push  
-        type: CI  
-        spec:  
-          cloneCodebase: true  
-          execution:  
-            steps:  
-              - step:  
-                  type: BuildAndPushDockerRegistry  
-                  name: Build and push image to DockerHub  
-                  identifier: Build_and_push_image_to_DockerHub  
-                  spec:  
-                    connectorRef: account.Docker_Quickstart  
-                    repo: cretzman/ciquickstart  
-                    tags:  
-                      - <+pipeline.sequenceId>  
-          infrastructure:  
-            type: KubernetesDirect  
-            spec:  
-              connectorRef: account.cidelegate  
-              namespace: harness-delegate-uat  
-          serviceDependencies: []  
-  projectIdentifier: CI_Quickstart  
-  orgIdentifier: default  
-
+```mdx-code-block
+<Tabs>
+  <TabItem value="hosted" label="Harness Cloud build infrastructure" default>
 ```
 
+1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_DRY_RUN`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
 
-### See Also
+```mdx-code-block
+  </TabItem>
+  <TabItem value="selfvm" label="Self-hosted VM build infrastructure">
+```
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_DRY_RUN`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="local" label="Local runner build infrastructure">
+```
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_DRY_RUN`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="other" label="Kubernetes cluster build infrastructure">
+```
+
+With the built-in **Build and Push** steps:
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_NO_PUSH`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+With the Buildah plugin (which is used to [build and push with non-root users](./build-and-push-nonroot.md)):
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Plugin** step with the Buildah plugin.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_DRY_RUN`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### Build multi-architecture images
+
+To use a CI pipeline to build multi-architecture images, create a separate stage for building and pushing each architecture.
+
+The following YAML example describes a multi-architecture pipeline with two stages. Both stages have similar components but they are slightly different according to the architecture of the image that the stage builds.
+
+Each stage:
+
+* Uses a variation of a Kubernetes cluster build infrastructure.
+* Has a **Run** step that prepares the DockerFile.
+* Has a **Build and Push** step that builds and uploads the image.
+
+<details>
+<summary>YAML example: Multi-arch image pipeline</summary>
 
 
-* [Run Step Settings](../../ci-technical-reference/run-step-settings.md)
+```yaml
+pipeline:
+  allowStageExecutions: true
+  projectIdentifier: my-project
+  orgIdentifier: default
+  tags:
+    CI: ""
+  properties:
+    ci:
+      codebase:
+        connectorRef: CI_GitHub
+        repoName: Automation.git
+        build: <+input>
+  stages:
+    - stage:
+        name: K8
+        identifier: upload
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: K8Linux
+              namespace: <+input>
+              runAsUser: ""
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              containerSecurityContext:
+                runAsUser: ""
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: CreateDockerFile
+                  identifier: CreateDockerFile
+                  spec:
+                    connectorRef: CI_Docker_Hub
+                    image: alpine:latest
+                    command: |-
+                      touch harnessDockerfileui
+                      cat > harnessDockerfileui <<- EOM
+                      FROM alpine:latest AS dev-env
+                      ARG foo
+                      RUN echo "$foo bar"
+                      ENTRYPOINT ["pwd"]
 
+                      FROM alpine:latest AS release-env
+                      ARG hello
+                      RUN echo "$hello world"
+                      ENTRYPOINT ["ls"]
+                      EOM
+                      cat harnessDockerfileui
+                    resources:
+                      limits:
+                        memory: 100M
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: DockerPushStep
+                  identifier: DockerPushStep
+                  spec:
+                    connectorRef: my-docker-hub
+                    repo: my-repo/ciquickstart
+                    tags:
+                      - "1.0"
+                    dockerfile: harnessDockerfileui
+                    target: dev-env
+                    resources:
+                      limits:
+                        memory: 100M
+        variables: []
+    - stage:
+        name: K8s Linux arm
+        identifier: CI_Golden_ARM
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: k8sarm
+              namespace: ci-gold-arm-delegate
+              automountServiceAccountToken: true
+              tolerations:
+                - effect: NoSchedule
+                  key: kubernetes.io/arch
+                  operator: Equal
+                  value: arm64
+              nodeSelector:
+                kubernetes.io/arch: arm64
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: CreateDockerFile
+                  identifier: CreateDockerFile
+                  spec:
+                    connectorRef: CI_Docker_Hub
+                    image: alpine:latest
+                    command: |-
+                      touch harnessDockerfileui
+                      cat > harnessDockerfileui <<- EOM
+                      FROM alpine:latest AS dev-env
+                      ARG foo
+                      RUN echo "$foo bar"
+                      ENTRYPOINT ["pwd"]
 
+                      FROM alpine:latest AS release-env
+                      ARG hello
+                      RUN echo "$hello world"
+                      ENTRYPOINT ["ls"]
+                      EOM
+                      cat harnessDockerfileui
+                    resources:
+                      limits:
+                        memory: 100M
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: DockerPushStep
+                  identifier: DockerPushStep
+                  spec:
+                    connectorRef: my-docker-hub
+                    repo: my-repo/ciquickstart
+                    tags:
+                      - "1.0"
+                    dockerfile: harnessDockerfileui
+                    target: dev-env
+                    resources:
+                      limits:
+                        memory: 100M
+        variables: []
+  variables: []
+  identifier: CI_MultiArch
+  name: CI_MultiArch
+```
+
+</details>

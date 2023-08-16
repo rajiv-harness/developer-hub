@@ -1,7 +1,7 @@
 ---
-title: Run Pipelines using Input Sets and Overlays
+title: Run pipelines using input sets and overlays
 description: Create a Pipeline template that can use different runtime variable values for different services, codebases, target environments, and goals.
-# sidebar_position: 2
+sidebar_position: 8
 helpdocs_topic_id: gfk52g74xt
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -19,8 +19,8 @@ Input Sets and Overlays allow you to create a Pipeline template that can use dif
 
 ### Before you begin
 
-* [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
-* [Kubernetes CD Quickstart](https://docs.harness.io/article/knunou9j30-kubernetes-cd-quickstart)
+* [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
+* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 * [Input Sets and Overlays](input-sets.md)
 * [Runtime Inputs](../20_References/runtime-inputs.md)
 

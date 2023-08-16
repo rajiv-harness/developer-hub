@@ -1,0 +1,13 @@
+{
+  "position": 4,
+  "label": "Probes",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Probes"
+   },
+  "customProps": {
+    "description": "Chaos probes reference"
+  }
+}

@@ -1,5 +1,5 @@
 ---
-title: Provision Users and Single Sign-On (SSO) with LDAP
+title: Single Sign-On (SSO) with LDAP
 description: This topic explains how to configure Single Sign-On with LDAP in Harness.
 # sidebar_position: 2
 helpdocs_topic_id: 142gh64nux
@@ -8,11 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
-:::note
-Currently, this feature is behind the feature flag `NG_ENABLE_LDAP_CHECK`. Contact Harness Support to enable the feature.
-
-:::
 
 Harness supports Single Sign-On (SSO) with LDAP implementations, including Active Directory and OpenLDAP. Integrating Harness with your LDAP directory enables you to log your LDAP users into Harness as part of Harness' SSO infrastructure.
 
@@ -84,6 +79,13 @@ The specific permissions needed by Harness depend on the LDAP directory service 
 ### Add LDAP SSO provider
 
 Adding your LDAP Provider to Harness initially involves establishing a connection from Harness (specifically, the Harness delegate) and querying your LDAP directory for the users and groups you want to sync with Harness for SSO.
+
+:::note
+If you experience frequent delegate time-out errors, try the following:
+1. In Harness, set the LDAP Response Timeout to 2 minutes.
+2. Set the sync interval to 1 hour. It is set to 15 minutes by default.
+:::
+
 
 #### Query your LDAP directory
 
@@ -349,12 +351,16 @@ In **Account Settings**, click **Access Control**, and then click the **User Gro
 
 ### Harness Local Login
 
-To prevent lockouts, a User in the Harness Administrators Group can use the [**Local Login**](http://app.harness.io/auth/#/local-login) URL to log in and update the settings.
+To prevent lockouts, a User in the Harness Administrators Group can use the Local Login URL `https://app.harness.io/auth/#/local-login` to log in and update the Ldap settings.
 
-1. Log in using **Harness Local Login**.
+For the Harness production cluster prod-3, the local login URL is `https://app3.harness.io/auth/#/local-login`.
+
+![](./static/single-sign-on-saml-118.png)
+
+1. Log in using **Harness Local Login**.
 2. Change the settings to enable users to log in.
 
 
 :::note
-You can disable Local Login using the feature flag `DISABLE_LOCAL_LOGIN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+You can disable Local Login using the feature flag `DISABLE_LOCAL_LOGIN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 :::

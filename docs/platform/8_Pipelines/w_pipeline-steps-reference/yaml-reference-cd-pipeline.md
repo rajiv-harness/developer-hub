@@ -1,5 +1,5 @@
 ---
-title: YAML Reference -- Pipelines
+title: YAML reference -- pipelines
 description: This topic describes the YAML schema for a CD Pipeline.
 # sidebar_position: 2
 helpdocs_topic_id: xs2dfgq7s2
@@ -25,13 +25,14 @@ The Harness YAML schema is over 20k lines long and we are investigating how to e
 In the meantime, you can use [Chrome DevTools](https://developer.chrome.com/docs/devtools/) to view the schema:
 
 ![](./static/yaml-reference-cd-pipeline-00.png)
+
 ### Pipeline Studio YAML Editor
 
 The Pipeline Studio includes visual and YAML editors.
 
 The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio.
 
-See ​[CD Quickstarts](https://docs.harness.io/category/c9j6jejsws) and [CI Quickstarts](https://docs.harness.io/category/onboard-with-ci).
+See [CD Quickstarts](https://developer.harness.io/tutorials/cd-pipelines) and [Get started with CI](/docs/category/get-started-with-ci).
 
 The YAML editor validates YAML before allowing you to save it.
 
@@ -44,11 +45,13 @@ The YAML editor has an autocomplete feature that makes it very easy to see what 
 The keyboard command for autocomplete is `Ctrl + Space`.
 
 ![](./static/yaml-reference-cd-pipeline-01.png)
+
 If an entry already has a value, the autocomplete will not show you other options. You need to delete the value and then enter `Ctrl + Space`.
 
 The command palette keyboard command is `F1`.
 
 ![](./static/yaml-reference-cd-pipeline-02.png)
+
 The command palette displays the keyboard shortcuts for all commands.
 
 ### Limitations
@@ -200,7 +203,7 @@ pipeline:
 ```
 See also:
 
-* [Using Shell Scripts in CD Stages](https://docs.harness.io/article/k5lu0u6i1i-using-shell-scripts)
+* [Using Shell Scripts in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts)
 
 ### Stage
 
@@ -319,7 +322,7 @@ See also:
 
 * [Add a Stage](../add-a-stage.md)
 * [Define a Failure Strategy on Stages and Steps](../define-a-failure-strategy-on-stages-and-steps.md)
-* [Set Execution Conditions on Stages and Steps](https://docs.harness.io/article/f5y37ke7ko-set-execution-conditions-on-stages-and-steps)
+* [Run Specific Stages in Pipeline](../run-specific-stage-in-pipeline.md)
 
 ### Service
 
@@ -364,7 +367,7 @@ spec:
 ```
 See also:
 
-* [Propagate and Override CD Services](https://docs.harness.io/article/t57uzu1i41-propagate-and-override-cd-services)
+* [Propagate and Override CD Services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services)
 
 ### Infrastructure
 
@@ -415,8 +418,8 @@ That example is for the platform agnostic Kubernetes infrastructure. For a diffe
 ```
 See also:
 
-* [Define Your Kubernetes Target Infrastructure](https://docs.harness.io/article/0ud2ut4vt2-define-your-kubernetes-target-infrastructure)
-* [Define Kubernetes Cluster Build Infrastructure](https://docs.harness.io/article/x7aedul8qs-kubernetes-cluster-build-infrastructure-setup)
+* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
+* [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
 
 ### Execution
 
@@ -459,9 +462,6 @@ execution:
               timeout: 10m  
     rollbackSteps: []
 ```
-See also:
-
-* [Viewing Execution Status](https://docs.harness.io/article/aiuwxmwfe9-viewing-execution-status)
 
 ### Steps and Step Groups
 
@@ -517,7 +517,7 @@ Here is an example of a Canary Deployment step.
 ```
 See also:
 
-* [CD How-tos](https://docs.harness.io/category/21a052rbi0)
+* [CD How-tos](https://developer.harness.io/docs/category/advanced-cd-use-cases)
 
 ### Fixed Value, Runtime Input, and Expression
 
@@ -566,7 +566,7 @@ flowControl:
 ```
 See also:
 
-* [Synchronize Deployments using Barriers](https://docs.harness.io/article/dmlf8w2aeh-synchronize-deployments-using-barriers)
+* [Synchronize Deployments using Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers/)
 
 ### Notification Rules
 
@@ -618,7 +618,7 @@ notificationRules:
 ```
 See also:
 
-* [Add a Pipeline Notification Strategy](https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events)
+* [Add a Pipeline Notification Strategy](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/)
 
 ### Triggers
 

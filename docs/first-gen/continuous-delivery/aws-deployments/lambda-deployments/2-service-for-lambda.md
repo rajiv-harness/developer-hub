@@ -8,17 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io/article/5fnx4hgwsa).This topic describes how to create a Harness Application and adds a Service that uses a function file, runtime, and handler information to define the Lambda function to deploy.
-
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Review: Artifact Source Support](#review_artifact_source_support)
-* [Step 1: Create a Harness Lambda Service](#step_1_create_a_harness_lambda_service)
-* [Step 2: Add Lambda Functions](#step_2_add_lambda_functions)
-* [Step 3: Lambda Function Specification](#step_3_lambda_function_specification)
-* [Option: Lambda Environment Variables using Service Config Variables](#option_lambda_environment_variables_using_service_config_variables)
-* [Next Steps](#next_steps)
+This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart.md).This topic describes how to create a Harness Application and adds a Service that uses a function file, runtime, and handler information to define the Lambda function to deploy.
 
 ### Before You Begin
 
@@ -28,11 +18,42 @@ In this topic:
 
 Harness supports the following artifact sources with Lambda:
 
-* [Jenkins](https://docs.harness.io/article/qa7lewndxq-add-jenkins-artifact-servers)
-* [Artifactory](https://docs.harness.io/article/nj3p1t7v3x-add-artifactory-servers)
+* [Jenkins](../../../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md)
+* [Artifactory](../../../firstgen-platform/account/manage-connectors/add-artifactory-servers.md)
 * [AWS S3](1-delegate-and-connectors-for-lambda.md)
-* [Nexus](https://docs.harness.io/article/rdhndux2ab-nexus-artifact-sources)
-* [Custom Artifact Source](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source)
+* [Nexus](../../../firstgen-platform/techref-category/cd-ref/artifacts-ref/nexus-artifact-sources.md)
+* [Custom Artifact Source](../../model-cd-pipeline/setup-services/custom-artifact-source.md)
+
+### Supported runtimes
+
+Harness supports the following runtimes:
+
+- nodejs4.3
+- nodejs4.3-edge
+- nodejs6.10
+- nodejs8.10
+- nodejs10.x
+- nodejs12.x
+- nodejs14.x
+- nodejs16.x
+- nodejs18.x
+- java8.al2
+- java11
+- python2.7
+- python3.6
+- python3.7
+- python3.8
+- python3.9  
+- dotnetcore1.0
+- dotnetcore2.0
+- dotnetcore2.1
+- dotnetcore3.1
+- dotnet6
+- go1.x
+- ruby2.5
+- ruby2.7
+- provided
+- provided.al2
 
 ### Step 1: Create a Harness Lambda Service
 
@@ -54,7 +75,7 @@ An Artifact Source in a Lambda Service is the Lambda function file you want to d
 
 To add an Artifact Source to this Service, do the following:
 
-1. In your Lambda Service, click **Add Artifact Source**, and then click **Amazon S3**. For information on using a Custom Artifact Source, see [Custom Artifact Source](https://docs.harness.io/article/jizsp5tsms-custom-artifact-source). 
+1. In your Lambda Service, click **Add Artifact Source**, and then click **Amazon S3**. For information on using a Custom Artifact Source, see [Custom Artifact Source](../../model-cd-pipeline/setup-services/custom-artifact-source.md). 
 
    The **Amazon S3 Artifact Source** dialog appears.
 
@@ -115,7 +136,7 @@ When you are done, click **Submit**. Your function is added to the Service.
 
 ### Option: Lambda Environment Variables using Service Config Variables
 
-You can use [Config Variables](https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables) in your Service to create [Lambda Environment Variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
+You can use [Config Variables](../../model-cd-pipeline/setup-services/add-service-level-config-variables.md) in your Service to create [Lambda Environment Variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
 
 Encrypted Config Variables will appear as plaintext Environment Variables in Lambda.
 
@@ -125,5 +146,5 @@ When you deploy your function, Harness replaces any existing Environment variabl
 
 * [Define your Lambda Target Infrastructure](3-lambda-environments.md)
 * [Create a Basic Lambda Deployment](4-lambda-workflows-and-deployments.md)
-* [Troubleshooting AWS Lambda Deployments](https://docs.harness.io/article/g9o2g5jbye-troubleshooting-harness#aws_lambda)
+* [Troubleshooting AWS Lambda Deployments](../../../firstgen-troubleshooting/troubleshooting-harness.md#aws-lambda)
 

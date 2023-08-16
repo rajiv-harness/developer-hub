@@ -1,89 +1,17 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
-import TutorialCard, { CardItem, docType } from "./TutorialCard";
-
-/* Define the cards here */
-const FeaturedList: CardItem[] = [
-  {
-    title: "Node and Docker CI Pipeline",
-    module: "ci",
-    icon: "/img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide walks you through building a NodeJS and
-        Docker Application in a CI Pipeline.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-node-docker-quickstart",
-  },
-];
-
-const DroneList: CardItem[] = [
-  {
-    title: "Coming Soon",
-    module: "ci",
-    icon: "/img/icon_ci.svg",
-    description: <>Drone Tutorials Coming Soon</>,
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "tbd",
-  },
-];
-
-const CIList: CardItem[] = [
-  {
-    title: "Node and Docker CI Pipeline",
-    module: "ci",
-    icon: "/img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide walks you through building a NodeJS and
-        Docker Application in a CI Pipeline.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-node-docker-quickstart",
-  },
-  {
-    title: "Run LocalStack as a Service",
-    module: "ci",
-    icon: "/img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide shows how to run LocalStack as a Service
-        Dependency in a CI Pipeline
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-localstack-background-step",
-  },
-  {
-    title: "Build and publish a Java HTTP Server",
-    module: "ci",
-    icon: "/img/icon_ci.svg",
-    description: (
-      <>
-        Build, test, and publish a Docker image for a Java HTTP server
-        application
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "20 min",
-    link: "/tutorials/build-code/ci-java-http-server",
-  },
-];
+import TutorialCard from "./TutorialCard";
+import {
+  FeaturedList,
+  // DroneList,
+  CIList,
+} from "./data/continuousIntegrationData";
 
 export default function CI() {
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="CI" description="CI">
     //   <ul className={styles.breadCrumb}>
@@ -91,17 +19,17 @@ export default function CI() {
     //     <li>Build and Test Code</li>
     //   </ul>
     <div className="container">
-      <img src="/img/ci.svg" />
       <div className={styles.SectionName}>
-        <h3>Build & Test Code</h3>
+        <h3>Set up CI pipelines to automate building, testing, & publishing of artifacts</h3>
+
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src="/img/icon_ci.svg" />
+            <img src={`${baseUrl}img/icon_ci.svg`} />
             <h1>Continuous Integration</h1>
           </div>
-          <div>
+          <div className={styles.btnContainer}>
             <Link href="/docs/continuous-integration">
               <button
                 className={clsx(
@@ -110,7 +38,23 @@ export default function CI() {
                   styles.btnLight
                 )}
               >
-                <img src="/img/icon_document.png" /> Documentation
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_documentation.svg`} />
+                Documentation
+              </button>
+            </Link>
+
+            <Link href="/release-notes/continuous-integration">
+              <button
+                className={clsx(
+                  "button button--lg",
+                  styles.btn,
+                  styles.btnLight
+                )}
+              >
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_release_notes.svg`} />
+                Release Notes
               </button>
             </Link>
           </div>
@@ -118,27 +62,27 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              The CI Overview provides a bird's-eye view of all your Builds —
-              successful, failed, aborted, and expired — and the percentage of
-              successful builds for individual codebases. You can easily see
-              where your builds have failed and drill down into specific builds
-              to troubleshoot and analyze the root causes.
+              Harness CI helps you build and test your code. It also provides a
+              bird's-eye view of all your builds — successful, failed, aborted,
+              and expired — and the percentage of successful builds for
+              individual codebases. You can easily see where your builds have
+              failed and drill down into specific builds to troubleshoot and
+              analyze the root causes.
             </p>
             <div className={styles.alignCenter}>
               <Link
                 className={clsx("button button--lg", styles.btn, styles.btnCI)}
                 to="#all-tutorials"
               >
-                CI Tutorials
-                <img src="/img/Stroke.svg" />
+                Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
               <Link href="https://harness.io/products/continuous-integration">
-                <button className={styles.link}>Learn more about CI</button>
+                <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
           <div>
-            <img src="/img/ci_flow.svg" />
+            <img src={`${baseUrl}img/ci.svg`} />
           </div>
         </div>
       </div>
@@ -147,10 +91,12 @@ export default function CI() {
         <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
       </div>
       <div className={styles.subSection}>
-        {/* <h3>
+        {/*
+        <h3>
           Drone Tutorials
         </h3>
-  <TutorialCard FeatureList={DroneList} /> */}
+        <TutorialCard FeatureList={DroneList} />
+        */}
         <h3 id="all-tutorials">All CI Tutorials</h3>
         <TutorialCard FeatureList={CIList} />
       </div>

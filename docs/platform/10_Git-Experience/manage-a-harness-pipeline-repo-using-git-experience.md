@@ -1,7 +1,7 @@
 ---
-title: Manage a Harness Pipeline Repo Using Git Experience
+title: Manage a Harness pipeline repo using Git Experience
 description: Git Experience enables you to store and manage your Harness Pipelines and configs in your Git repos.
-# sidebar_position: 2
+sidebar_position: 8
 helpdocs_topic_id: 5nz7j3e1yc
 helpdocs_category_id: rv2jo2hoiy
 helpdocs_is_private: false
@@ -22,7 +22,7 @@ This topic assumes that you are familiar with the following:
 * How to create Input Sets and Triggers using Git Experience. See [Manage Input Sets and Triggers in Git Experience](manage-input-sets-in-simplified-git-experience.md).
 * A basic understanding of how Pipelines, Input Sets, and Triggers work together:
 	+ [Run Pipelines using Input Sets and Overlays](../8_Pipelines/run-pipelines-using-input-sets-and-overlays.md)
-	+ [Trigger Pipelines using Git Event Payloads](../11_Triggers/trigger-pipelines-using-custom-payload-conditions.md)
+	+ [Trigger Pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/)
 
 This topic also assumes you have a Git repo with the codebase you want to build and at least one branch.
 
@@ -37,8 +37,6 @@ In the Harness Pipeline Studio, go to your CI project and then click **Pipelines
 Enter a name that corresponds to the code repo for the Pipeline. In this case we use the same name as the repo: **myFrontEndService**. Under **How do you want to set up your pipeline**, select **Remote**.
 
 Select the Git Connector and the Git repo where you want to save the Pipeline. In this case, we select **myHarnessConfigs**.
-
-For the YAML path, enter **.harness/{PIPELINE\_SUBFOLDER}/{PIPELINE\_NAME}.yml**. The root folder **.harness** is required. The **{*****PIPELINE\_SUBFOLDER*****}** is not required, but it is good practice if you want to store multiple Pipelines in the same repo. This makes it much easier to manage all of your Harness definitions.
 
 In this case, we save the Pipeline YAML as `./harness/myFrontEndService/myFrontEndService.yaml`.
 
@@ -91,13 +89,15 @@ Now that you have a Pipeline and Input Set in your default branch, you create a 
 * In the **Configuration** tab > **Repository Name** field, make sure you specify the codebase repo and not the Harness repo.
 * In the **Pipeline Input Repo** > **Pipeline Input**, select the Input Set you just created.
 * In the **Pipeline Input Repo** > **Pipeline Reference Branch** field, specify the default branch in the Harness repo where you initially saved the Pipeline. When the Trigger receives a payload, it looks in the repo where you store your Harness definitions. Then it uses the Pipeline in the branch specified by this field.The default setting for the Pipeline Reference Branch field is `<+trigger.branch>`. This is a reasonable default the Trigger is webhook-based AND your code and Harness configs are in the same repo. The second condition does not apply in this case. Therefore, you must set this field manually.
-* For information on other fields, [Trigger Pipelines using Git Event Payload Conditions](../11_Triggers/trigger-pipelines-using-custom-payload-conditions.md).
+* For information on other fields, go to [Trigger Pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/).
 
 In the Pipeline Input tab, select the Input Set you just created and click **Create Trigger**.
 
 You now have a Pipeline, Input Set, and Trigger that you can use in new branches that you create from the default branch.
 
-Unlike Pipelines and Input Sets, Trigger definitions are saved in the Harness database and not in your Git repo. Each Trigger is associated with a specific Pipeline, which is specified by the `pipelineIdentifier` element in the Trigger YAML.![](./static/manage-a-harness-pipeline-repo-using-git-experience-19.png)
+Unlike Pipelines and Input Sets, Trigger definitions are saved in the Harness database and not in your Git repo. Each Trigger is associated with a specific Pipeline, which is specified by the `pipelineIdentifier` element in the Trigger YAML.
+
+![](./static/manage-a-harness-pipeline-repo-using-git-experience-19.png)
 
 ### Next steps
 
@@ -125,7 +125,24 @@ You might find that you can use the default Pipeline, Input Set, and Trigger you
 Git Experience enables you to create branches in your Harness repo so you can create different versions of the same Pipeline for different use cases. For example, suppose you want your Pipeline to push to different registries depending on the updated branch. Updates to `main` push to a public registry; updates to all other branches push to a private registry. To implement this, do the following:
 
 1. Customize your default Pipeline and click Enter.
-2. Select **Commit to a new branch** and enter the branch name. In this case, we save the Pipeline in a new branch `push-to-private`:![](./static/manage-a-harness-pipeline-repo-using-git-experience-20.png)
-3. Customize the Input Sets and Triggers for the new Pipeline as needed. For this specific use case, you would add a condition to the Trigger so it uses the Pipeline in `push-to-private` when it receives a payload from any branch except `main`.![](./static/manage-a-harness-pipeline-repo-using-git-experience-21.png)
-4. In the Trigger editor > Pipeline Input field, make sure that the Pipeline Reference Branch field references the new branch:![](./static/manage-a-harness-pipeline-repo-using-git-experience-22.png)
+2. Select **Commit to a new branch** and enter the branch name. In this case, we save the Pipeline in a new branch `push-to-private`:
 
+   ![](./static/manage-a-harness-pipeline-repo-using-git-experience-20.png)
+
+3. Customize the Input Sets and Triggers for the new Pipeline as needed. For this specific use case, you would add a condition to the Trigger so it uses the Pipeline in `push-to-private` when it receives a payload from any branch except `main`.
+
+   ![](./static/manage-a-harness-pipeline-repo-using-git-experience-21.png)
+   
+4. In the Trigger editor > Pipeline Input field, make sure that the Pipeline Reference Branch field references the new branch:
+   
+   ![](./static/manage-a-harness-pipeline-repo-using-git-experience-22.png)
+
+## Set default Git connector for Git Experience
+
+You can set the default Git connector for Git Experience pipelines and input sets. The default Git connector will be selected whenever you create or import operations with Git Experience entities. 
+
+This default connector can be changed at any time and another connector can be used when needed.
+
+You can select the default connector in your project, org, or account **Default Settings**:
+
+<docimage path={require('./static/78f49fd6d5d64ecd1b877cf3f76767ae04cce53bffccbb67b20447c64ccca5cf.png')} width="60%" height="60%" title="Click to view full size image" />  

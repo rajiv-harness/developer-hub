@@ -1,5 +1,5 @@
 ---
-title: Authentication Overview
+title: Authentication overview
 description: An overview of how to control access to your organization's Harness account by SSO (single sign-on) provider, email domain, 2FA (two-factor authentication), and password policies (strength, expiration, and lockout).
 # sidebar_position: 2
 helpdocs_topic_id: gdob5gvyco
@@ -22,18 +22,23 @@ Harness Access control includes:
 * Authorization — This checks what the user can do.
 * Auditing — This logs what the user does.
 
-This topic focuses on Authentication. For more on Authorization, see [Access Management (RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md).
+This topic focuses on *authentication*. For information about *authorization*, see [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 Users in Administrator groups can use Authentication Settings to restrict access to an organization's Harness account. The options you choose will apply to all your account's users. These options include:
 
-* [Enable Public OAuth Providers](#enable-public-oauth-providers)
-* [Enable SAML Providers](#enable-security-assertion-markup-language-saml-providers)
-* [Enforce Password Policies](#enforce-password-policies)
-  * [Enforce Password Strength](#enforce-password-strength)
-  * [Enforce Password Expiration](#enforce-password-expiration)
-  * [Enforce Lockout After Failed Logins](#enforce-lockout-after-failed-logins)
-* [Enforce Two Factor Authentication](#enforce-two-factor-authentication)
-* [Restrict Email Domains](#restrict-email-domains)
+- [Before you begin](#before-you-begin)
+- [Review: Authentication Settings](#review-authentication-settings)
+- [Configure Authentication](#configure-authentication)
+	- [Enable Public OAuth Providers](#enable-public-oauth-providers)
+	- [Enable Security Assertion Markup Language (SAML) Providers](#enable-security-assertion-markup-language-saml-providers)
+- [Enforce Password Policies](#enforce-password-policies)
+	- [Enforce Password Strength](#enforce-password-strength)
+	- [Enforce Password Expiration](#enforce-password-expiration)
+	- [Enforce Lockout After Failed Logins](#enforce-lockout-after-failed-logins)
+- [Enforce Two Factor Authentication](#enforce-two-factor-authentication)
+- [Set Up Vanity URL](#set-up-vanity-url)
+- [Restrict Email Domains](#restrict-email-domains)
+- [Set inactive session timeout](#set-inactive-session-timeout)
 
 ### Configure Authentication
 
@@ -110,3 +115,21 @@ Click **Save**. You can see the success message - **Domain restrictions have bee
 Your resulting allowlist will impose a further filter on logins to Harness via both SSO providers and Harness username/passwords.You can modify your domain selections by clicking the Edit icon.
 
 ![](./static/authentication-overview-50.png)
+
+### Set inactive session timeout
+
+Harness logs a user out of their account after a session timeout if there has been no activity.
+
+To configure your account's session timeout: 
+
+1. In your Harness account, select **Account Settings**.
+
+2. Select **Authentication**.
+
+3. In **Session Timeout (in minutes)**, enter the time in minutes to set the session time out.
+
+   The default session timeout value is 1440 minutes.
+
+   You can set this to a minimum of 30 minutes and a maximum of 4320 minutes.
+
+![](./static/SessionTimeout.png)

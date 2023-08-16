@@ -1,5 +1,5 @@
 ---
-title: Best Practices for Looping Strategies
+title: Best practices for looping strategies
 description: Review this topic before you implement a Matrix and Parallelism strategy in your pipeline.
 # sidebar_position: 2
 helpdocs_topic_id: q7i0saqgw4
@@ -26,14 +26,20 @@ A good general rule to follow is: **Your looping scenario is too complex if you 
 When a Pipeline requests resources for a Step, it calculates the *maximum CPU and memory required at any point in the Stage*. Consider the following scenario:
 
 * Your Build Stage has three Steps: the first builds an artifact for a web app; the second runs the artifact in a browser to confirm that it runs, the third pushes it to a registry.
-* Each Step consumes up to 500M (memory) and 400m (CPU). Because the Steps run serially, not concurrently, the Pipeline reserves 500Mi memory and 400m CPU for the entire Stage.![](./static/best-practices-for-looping-strategies-06.png)
+* Each Step consumes up to 500M (memory) and 400m (CPU). Because the Steps run serially, not concurrently, the Pipeline reserves 500Mi memory and 400m CPU for the entire Stage.
+
+  ![](./static/best-practices-for-looping-strategies-06.png)
+
 * Suppose you want to test the app on both Chrome and Firefox. You create a simple Matrix strategy for the Step:
 ```
 matrix:  
   browser: [ chrome, firefox ]  
   maxConcurrency: 2 
 ```
-* The Pipeline creates two copies of the Run Stage and runs them concurrently. This doubles the resource consumption for the overall Stage. When the Pipeline runs, it reserves double the resources (1000M memory, 800m CPU) for the overall Stage.![](./static/best-practices-for-looping-strategies-07.png)
+* The Pipeline creates two copies of the Run Stage and runs them concurrently. This doubles the resource consumption for the overall Stage. When the Pipeline runs, it reserves double the resources (1000M memory, 800m CPU) for the overall Stage.
+
+  ![](./static/best-practices-for-looping-strategies-07.png)
+  
 * So far, so good. The Pipeline executes with no problem. But suppose you add another dimension to your matrix and increase the `maxConcurrency`to run all the Stages at once?
 ```
 matrix:  
@@ -53,10 +59,60 @@ Harness recommends that you determine the `maxConcurrency` for a specific Stage 
 2. Run the Pipeline and monitor the resource consumption for the overall Pipeline.
 3. Gradually increase the `maxConcurrency` based on each successive run until you reach a "happy medium" between your run times and resource consumption.
 
+### What is the best way to loop over items in a list or array using variables?
+
+Harness variable expressions support all Java String class built-in methods.
+
+You can create a Harness string variable containing a comma-separated list of other strings that represent items. At runtime, you can even get this list from the input.   
+
+The following example shows a pipeline variable that contains a list of Jira tickets:
+
+```
+# Variable: <+pipeline.variables.jiraTickets>
+HD-29193,HD-29194,HD-29195
+
+# YAML representation
+pipeline:
+  identifier: RepeatJiraTickets
+  variables:
+    - name: jiraTickets
+      type: String
+      value: HD-29193,HD-29194,HD-29195 // We have added the list of tickets to be comma separated
+```
+
+To split the variable into an array of substrings, use the `split()` method:
+
+```
+<+pipeline.variables.jiraTickets.split(',')>
+```
+
+The following example shows how to use the above expression in the `repeat` looping strategy:
+
+```
+repeat:
+  items: <+stage.variables.jiraTickets.split(',')>
+  maxConcurrency: 1
+```
+
+To refer to each item in the loop use the `<+repeat. Item>` expression:
+
+![Repeat with split()](./static/best-practices-for-looping-strategies-08.png)
+
+
+You can also create an axis for your matrix dynamically using the following expression:
+
+```
+matrix:
+  jira: <+stage.variables.jiraTickets.split(',')>
+```
+
+And use the `<+matrix.jira>` expression instead.
+
+
 ### See also
 
-* [Optimizing CI Build Times](https://harness.helpdocs.io/article/g3m7pjq79y)
-* [How to Run a Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
+* [Optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times)
+* [How to Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
 * [Looping Strategies Overview: Matrix, Repeat, and Parallelism](looping-strategies-matrix-repeat-and-parallelism.md)
-* [Speed Up CI Test Pipelines Using Parallelism](https://harness.helpdocs.io/article/kce8mgionj)
+* [Speed Up CI Test Pipelines Using Parallelism](../8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md)
 
